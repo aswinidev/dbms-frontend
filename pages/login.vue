@@ -1,25 +1,44 @@
 <template>
-  <div class="materialContainer">
-    <div class="box">
-      <div class="title">
-        Login
+  <div>
+    <div class="bgImg" />
+    <div class="content">
+      <div class="d-flex h-100 align-items-center justify-content-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 col-sm-6 ml-auto mr-auto">
+              <div class="card">
+                <div class="card-body">
+                  <form>
+                    <div class="glowBox">
+                      <h2 class="title">
+                        Log In
+                      </h2>
+                    </div>
+                  </form>
+                  <div class="logIn">
+                    <span>
+                      <input type="text" class="form" placeholder="Email" autocomplete="off" style="cursor: auto;">
+                      <span class="underline" />
+                    </span>
+                    <span>
+                      <input type="password" class="form" placeholder="Password" autocomplete="off" style="cursor: auto;">
+                      <span class="underline" />
+                    </span>
+                  </div>
+                  <center class="but-grp">
+                    <button class="custom-btn btn-1">
+                      <span>Customer Log In</span>
+                    </button>
+                    <button class="custom-btn btn-1">
+                      <span>Employee Log In</span>
+                    </button>
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="input">
-        <input id="pEmail" type="text" name="pEmail" placeholder="Email">
-        <span class="spin" />
-      </div>
-
-      <div class="input">
-        <input id="password" type="password" name="password" placeholder="Password">
-        <span class="spin" />
-      </div>
-
-      <div class="button login">
-        <button><span>Log In</span> <i class="fa fa-check" /></button>
-      </div>
-
-      <a href="" class="pass-forgot">Forgot your password?</a>
     </div>
   </div>
 </template>
