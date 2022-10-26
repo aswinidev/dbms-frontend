@@ -51,7 +51,7 @@
                     </span>
                     <span>
                       <input
-                        v-model="password"
+                        v-model="pswd"
                         type="password"
                         class="form"
                         placeholder="Password"
@@ -126,18 +126,6 @@
                       >
                       <span class="underline" />
                     </span>
-                    <span>
-                      <input v-model="fname" type="number" class="form" placeholder="Number of Members" autocomplete="off" style="cursor: auto;">
-                      <span class="underline" />
-                    </span>
-                    <span>
-                      <input v-model="fname" type="text" class="form" placeholder="Aadhar Card Number" autocomplete="off" style="cursor: auto;">
-                      <span class="underline" />
-                    </span>
-                    <span>
-                      <input v-model="fname" type="text" class="form" placeholder="Alternate Email Address" autocomplete="off" style="cursor: auto;">
-                      <span class="underline" />
-                    </span>
                   </div>
                   <center>
                     <button class="custom-btn btn-1" @click="register">
@@ -155,14 +143,15 @@
 </template>
 
 <script>
-import Axios from 'axios'
+import axios from 'axios'
+const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
       fname: '',
       lname: '',
       pEmail: '',
-      password: '',
+      pswd: '',
       houseNo: '',
       state: '',
       city: '',
@@ -173,12 +162,19 @@ export default {
   },
   methods: {
     register () {
-      Axios('http://localhost:8081/register')
-      Axios.post('http://localhost:8081/register', {
-        name: this.fname,
-        password: this.password
+      myaxios.post('/register', {
+        fname: this.fname,
+        lname: this.lname,
+        pEmail: this.pEmail,
+        pswd: this.pswd,
+        houseNo: this.houseNo,
+        state: this.state,
+        city: this.city,
+        country: this.country,
+        pinCode: this.pinCode,
+        gender: this.gender
       }).then(function (response) {
-        console.log(this.fname)
+        console.log(response.data)
       })
     }
   }
