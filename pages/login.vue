@@ -17,16 +17,30 @@
                   </form>
                   <div class="logIn">
                     <span>
-                      <input type="text" class="form" placeholder="Email" autocomplete="off" style="cursor: auto;">
+                      <input
+                        v-model="pEmail"
+                        type="text"
+                        class="form"
+                        placeholder="Email"
+                        autocomplete="off"
+                        style="cursor: auto;"
+                      >
                       <span class="underline" />
                     </span>
                     <span>
-                      <input type="password" class="form" placeholder="Password" autocomplete="off" style="cursor: auto;">
+                      <input
+                        v-model="pswd"
+                        type="password"
+                        class="form"
+                        placeholder="Password"
+                        autocomplete="off"
+                        style="cursor: auto;"
+                      >
                       <span class="underline" />
                     </span>
                   </div>
                   <center class="but-grp">
-                    <button class="custom-btn btn-1">
+                    <button class="custom-btn btn-1" @click="customerLogin">
                       <span>Customer Log In</span>
                     </button>
                     <button class="custom-btn btn-1">
@@ -42,9 +56,27 @@
     </div>
   </div>
 </template>
-
 <script>
-export default {}
+import axios from 'axios'
+const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+export default {
+  data () {
+    return {
+      pEmail: '',
+      pswd: ''
+    }
+  },
+  methods: {
+    customerLogin () {
+      myaxios.post('/login', {
+        pEmail: this.pEmail,
+        pswd: this.pswd
+      }).then(function (response) {
+        console.log(response.data)
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
