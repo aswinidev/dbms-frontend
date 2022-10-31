@@ -8,30 +8,30 @@
             <div class="form-header">
               <h1>Make your reservation</h1>
             </div>
-            <!-- <form>
-              <div class="form-group">
+            <form>
+              <!-- <div class="form-group">
                 <input class="form-control" type="text" placeholder="Country, ZIP, city...">
                 <span class="form-label">Destination</span>
-              </div> -->
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input class="form-control" type="date" required>
-                  <span class="form-label">Check In</span>
+              </div>  -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input class="form-control" type="date" required>
+                    <span class="form-label">Check In</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input class="form-control" type="date" required>
+                    <span class="form-label">Check out</span>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input class="form-control" type="date" required>
-                  <span class="form-label">Check out</span>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input class="form-control" type="number" placeholder="No of Single rooms" min="0" required>
-                  <span class="form-label">No of Single rooms</span>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input class="form-control" type="number" placeholder="No of Single rooms" min="0" required>
+                    <span class="form-label">No of Single rooms</span>
                   <!-- <select class="form-control" required>
                     <option value="" selected hidden>
                       no of rooms
@@ -42,12 +42,12 @@
                   </select>
                   <span class="select-arrow" />
                   <span class="form-label">Rooms</span>  -->
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input class="form-control" type="number" placeholder="No of Double rooms" min="0" required>
-                  <span class="form-label">No of Double rooms</span>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input class="form-control" type="number" placeholder="No of Double rooms" min="0" required>
+                    <span class="form-label">No of Double rooms</span>
                   <!-- <select class="form-control" required>
                     <option value="" selected hidden>
                       no of adults
@@ -58,8 +58,8 @@
                   </select>
                   <span class="select-arrow" />
                   <span class="form-label">Adults</span> -->
+                  </div>
                 </div>
-              </div>
               <!-- <div class="col-md-4">
                 <div class="form-group">
                   <select class="form-control" required>
@@ -74,8 +74,8 @@
                   <span class="form-label">Children</span>
                 </div>
               </div> -->
-            </div>
-            <!-- <div class="row">
+              </div>
+              <!-- <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <input class="form-control" type="email" placeholder="Enter your Email">
@@ -89,11 +89,11 @@
                 </div>
               </div>
             </div> -->
-            <div class="form-btn">
-              <button class="submit-btn">
-                Check Availability
-              </button>
-            </div>
+              <div class="form-btn">
+                <button class="submit-btn">
+                  Check Availability
+                </button>
+              </div>
             </form>
           </div>
         </div>
