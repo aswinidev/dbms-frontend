@@ -1,6 +1,6 @@
 <template>
   <div class="container emp-profile">
-    <form method="post">
+    <form v-for="user in users" :key="user.userID" method="post">
       <div class="row">
         <div class="col-md-4">
           <div class="profile-img">
@@ -14,7 +14,7 @@
         <div class="col-md-6">
           <div class="profile-head">
             <h5>
-              Kshiti Ghelani
+              {{ user.fname + user.lname }}
             </h5>
             <ul id="myTab" class="nav nav-tabs" role="tablist">
               <li class="nav-item">
@@ -63,15 +63,15 @@
         </div>
         <div class="col-md-8">
           <div id="myTabContent" class="tab-content profile-tab">
-            <div v-for="user in users" :key="user.userID" class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
-              <div class="row">
+            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
+              <!-- <div class="row">
                 <div class="col-md-6">
                   <label>User Id</label>
                 </div>
                 <div class="col-md-6">
                   <p>{{ user.userID }}</p>
                 </div>
-              </div>
+              </div> -->
               <div class="row">
                 <div class="col-md-6">
                   <label>Name</label>
@@ -182,6 +182,8 @@ const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
+      emp: [],
+      cust: [],
       users: []
     }
   },
@@ -191,13 +193,45 @@ export default {
       .get(
         '/dashboard'
       )
-      .then(response => (this.users = response.data))
+      .then((response) => {
+        this.users = response.data
+        if (this.users.isEmp) { this.getEmployee() } else { this.getCustomer() }
+      }
+      )
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
       })
+  },
+  methods: {
+    getEmployee () {
+      myaxios
+        .get(
+          '/dashboard/employee'
+        )
+        .then(response => (this.emp = response.data))
+        .catch((error) => {
+          this.errorMessage = error.message
+          console.error('There was an error!', error)
+        })
+    },
+
+    getCustomer () {
+      myaxios
+        .get(
+          '/dashboard/customer'
+        )
+        .then(response => (this.cust = response.data))
+        .catch((error) => {
+          this.errorMessage = error.message
+          console.error('There was an error!', error)
+        })
+    }
+
+    // console.log('got data')
   }
 }
+
 </script>
 
   <style>
