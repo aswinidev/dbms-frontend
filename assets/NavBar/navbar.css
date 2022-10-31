@@ -1,6 +1,19 @@
-@import url("https://trentstewart.org/wp-content/themes/coaching/assets/public/css/frontend.css?ver=6.0.3");
+.name{
+    font-family: 'Lobster Two', cursive;
+    /* font-weight: 700; */
+    font-size: 50px;
+    color: inherit;
+    
+}
+.name:hover{
+    text-decoration: none;
+    color: inherit;
+}
 
-
-.menu-main-menu-container .nav-list .nav-dropdown {
-    display: block;
+.nav-link{
+    color: gray;
+    font-size: 24px;
+}
+.nav-link:hover{
+    color: black;
 }
