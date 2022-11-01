@@ -66,8 +66,8 @@
 </template>
 
 <script>
-// import axios from 'axios'
-// const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+import axios from 'axios'
+const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
@@ -78,22 +78,22 @@ export default {
     }
   },
   mounted () {
-    console.log('mounted')
-    // myaxios
-    //   .get(
-    //     '/dashboard/customer/bookings'
-    //   )
-    //   .then((response) => {
-    //     this.bookings = response.data
-    //   }
-    //   )
-    //   .catch((error) => {
-    //     this.errorMessage = error.message
-    //     console.error('There was an error!', error)
-    //   })
+    // console.log('mounted')
+    myaxios
+      .get(
+        '/dashboard/customer/bookings'
+      )
+      .then((response) => {
+        this.bookings = response.data
+      }
+      )
+      .catch((error) => {
+        this.errorMessage = error.message
+        console.error('There was an error!', error)
+      })
   },
   methods: {
-    getBookings () {
+    // getBookings () {
     //   myaxios
     //     .get(
     //       '/dashboard/customer/bookings'
@@ -106,7 +106,7 @@ export default {
     //       this.errorMessage = error.message
     //       console.error('There was an error!', error)
     //     })
-    },
+    // },
     goToFeedback () {
       this.$router.push('')
       // feedback page path
