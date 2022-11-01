@@ -16,22 +16,29 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input class="form-control" type="date" required>
-                    <span class="form-label">Check In</span>
+                    <input v-model="checkIn" class="form-control" type="text" required placeholder="Check In Date">
+                    <!-- <span class="form-label">Check In</span> -->
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input class="form-control" type="date" required>
-                    <span class="form-label">Check out</span>
+                    <input v-model="checkOut" class="form-control" type="text" required placeholder="Check Out Date">
+                    <!-- <span class="form-label">Check out</span> -->
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input class="form-control" type="number" placeholder="No of Single rooms" min="0" required>
-                    <span class="form-label">No of Single rooms</span>
+                    <input
+                      v-model="single"
+                      class="form-control"
+                      type="number"
+                      placeholder="No of Single rooms"
+                      min="0"
+                      required
+                    >
+                    <!-- <span class="form-label">No of Single rooms</span> -->
                   <!-- <select class="form-control" required>
                     <option value="" selected hidden>
                       no of rooms
@@ -46,8 +53,15 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input class="form-control" type="number" placeholder="No of Double rooms" min="0" required>
-                    <span class="form-label">No of Double rooms</span>
+                    <input
+                      v-model="double"
+                      class="form-control"
+                      type="number"
+                      placeholder="No of Double rooms"
+                      min="0"
+                      required
+                    >
+                    <!-- <span class="form-label">No of Double rooms</span> -->
                   <!-- <select class="form-control" required>
                     <option value="" selected hidden>
                       no of adults
@@ -60,6 +74,34 @@
                   <span class="form-label">Adults</span> -->
                   </div>
                 </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3" />
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input
+                      v-model="numMembers"
+                      class="form-control"
+                      type="number"
+                      placeholder="No of Members"
+                      min="0"
+                      required
+                    >
+                  <!-- <span class="form-label">No of Members</span> -->
+                  <!-- <select class="form-control" required>
+                    <option value="" selected hidden>
+                      no of adults
+                    </option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                  <span class="select-arrow" />
+                  <span class="form-label">Adults</span> -->
+                  </div>
+                </div>
+                <div class="col-md-3" />
+              </div>
               <!-- <div class="col-md-4">
                 <div class="form-group">
                   <select class="form-control" required>
@@ -74,7 +116,6 @@
                   <span class="form-label">Children</span>
                 </div>
               </div> -->
-              </div>
               <!-- <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -90,7 +131,7 @@
               </div>
             </div> -->
               <div class="form-btn">
-                <button class="submit-btn">
+                <button class="submit-btn" @click="check">
                   Check Availability
                 </button>
               </div>
@@ -109,31 +150,21 @@ const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
-      fname: '',
-      lname: '',
-      pEmail: '',
-      pswd: '',
-      houseNo: '',
-      state: '',
-      city: '',
-      country: '',
-      pinCode: '',
-      gender: ''
+      checkIn: '',
+      checkOut: '',
+      single: '',
+      double: '',
+      numMembers: ''
     }
   },
   methods: {
-    register () {
-      myaxios.post('/register', {
-        fname: this.fname,
-        lname: this.lname,
-        pEmail: this.pEmail,
-        pswd: this.pswd,
-        houseNo: this.houseNo,
-        state: this.state,
-        city: this.city,
-        country: this.country,
-        pinCode: this.pinCode,
-        gender: this.gender
+    check () {
+      myaxios.post('/booking/check', {
+        checkIn: this.checkIn,
+        checkOut: this.checkOut,
+        single: parseInt(this.single),
+        double: this.double,
+        numMembers: this.numMembers
       }).then(function (response) {
         console.log(response.data)
       })

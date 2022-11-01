@@ -27,7 +27,7 @@ body {
     margin: auto;
     padding: 40px;
     overflow: hidden;
-    background-image: url('https://i.imgur.com/8z1tx3u.jpg');
+    /* background-image: url('https://i.imgur.com/8z1tx3u.jpg'); */
     background-size: cover;
     border-radius: 5px;
     z-index: 20;
@@ -144,9 +144,9 @@ body {
 
 .booking-form .form-label {
     position: absolute;
-    top: -10px;
+    top: -15px;
     left: 25px;
-    opacity: 0;
+    opacity: 1;
     color: #ff8846;
     font-size: 11px;
     font-weight: 700;

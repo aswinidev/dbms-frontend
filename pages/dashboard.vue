@@ -1,6 +1,6 @@
 <template>
   <div class="container emp-profile">
-    <form v-for="user in users" :key="user.userID" method="post">
+    <form method="post">
       <div class="row">
         <div class="col-md-4">
           <div class="profile-img">
@@ -14,7 +14,7 @@
         <div class="col-md-6">
           <div class="profile-head">
             <h5>
-              {{ user.fname + user.lname }}
+              GG
             </h5>
             <ul id="myTab" class="nav nav-tabs" role="tablist">
               <li class="nav-item">
@@ -120,8 +120,81 @@
                   <p>{{ user.gender }}</p>
                 </div>
               </div>
-            </div>
-            <div id="profile" class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab">
+              <div
+                v-if="users.isEmp"
+                class="tab-pane fade show active"
+                role="tabpanel"
+                aria-labelledby="home-tab"
+              >
+                <!-- <div class="row">
+                <div class="col-md-6">
+                  <label>User Id</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ user.userID }}</p>
+                </div>
+              </div> -->
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Current Address</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ emp.houseNo + ","+ employee.city + "," + employee.state + "," + emp.pinCode }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Marital Status</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ emp.maritalStatus }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Department Name</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ emp.deptName }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                v-else
+                class="tab-pane fade show active"
+                role="tabpanel"
+                aria-labelledby="home-tab"
+              >
+                <!-- <div class="row">
+                <div class="col-md-6">
+                  <label>User Id</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ user.userID }}</p>
+                </div>
+              </div> -->
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Aadhar Number</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ cust.aadharCardNumber }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Alternate Email Address</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ cust.alternateEmailAddress }}</p>
+                  </div>
+                </div>
+              </div>
+
+            <!-- <div id="profile" class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab">
               <div class="row">
                 <div class="col-md-6">
                   <label>Experience</label>
@@ -168,6 +241,7 @@
                   <p>Your detail description</p>
                 </div>
               </div>
+            </div> -->
             </div>
           </div>
         </div>
@@ -182,9 +256,9 @@ const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
-      emp: [],
-      cust: [],
-      users: []
+      emp: {},
+      cust: {},
+      user: {}
     }
   },
   mounted () {
