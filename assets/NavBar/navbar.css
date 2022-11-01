@@ -1,0 +1,19 @@
+.name{
+    font-family: 'Lobster Two', cursive;
+    /* font-weight: 700; */
+    font-size: 50px;
+    color: inherit;
+    
+}
+.name:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-link{
+    color: gray;
+    font-size: 24px;
+}
+.nav-link:hover{
+    color: black;
+}
