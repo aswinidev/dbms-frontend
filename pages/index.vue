@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NavBar />
     <HomePage />
     <Footer />
   </div>

@@ -4,17 +4,18 @@
       <div class="row">
         <div class="col-md-4">
           <div class="profile-img">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="">
-            <div class="file btn btn-lg btn-primary">
+            <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""> -->
+            <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="">
+            <!-- <div class="file btn btn-lg btn-primary">
               Change Photo
               <input type="file" name="file">
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-6">
           <div class="profile-head">
             <h5>
-              GG
+              {{ user.fname + " " + user.lname }}
             </h5>
             <ul id="myTab" class="nav nav-tabs" role="tablist">
               <li class="nav-item">
@@ -29,16 +30,16 @@
                 >About</a>
               </li>
               <!-- <li class="nav-item">
-                  <a
-                    id="profile-tab"
-                    class="nav-link"
-                    data-toggle="tab"
-                    href="#profile"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false"
-                  >Timeline</a>
-                </li> -->
+                <a
+                  id="profile-tab"
+                  class="nav-link"
+                  data-toggle="tab"
+                  href="#profile"
+                  role="tab"
+                  aria-controls="profile"
+                  aria-selected="false"
+                >Timeline</a>
+              </li> -->
             </ul>
           </div>
         </div>
@@ -48,18 +49,15 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <!-- <div class="profile-work">
-              <p>WORK LINK</p>
-              <a href="">Website Link</a><br>
-              <a href="">Bootsnipp Profile</a><br>
-              <a href="">Bootply Profile</a>
-              <p>SKILLS</p>
-              <a href="">Web Designer</a><br>
-              <a href="">Web Developer</a><br>
-              <a href="">WordPress</a><br>
-              <a href="">WooCommerce</a><br>
-              <a href="">PHP, .Net</a><br>
-            </div> -->
+          <div class="profile-work">
+            <p>Options</p>
+            <button type="button" class="btn btn-primary btn-block">
+              Primary
+            </button>
+            <button type="button" class="btn btn-primary btn-block">
+              Primary
+            </button>
+          </div>
         </div>
         <div class="col-md-8">
           <div id="myTabContent" class="tab-content profile-tab">
@@ -77,7 +75,7 @@
                   <label>Name</label>
                 </div>
                 <div class="col-md-6">
-                  <p>{{ user.fname + user.lname }} </p>
+                  <p>{{ user.fname + " " + user.lname }} </p>
                 </div>
               </div>
               <div class="row">
@@ -93,7 +91,7 @@
                   <label>Address</label>
                 </div>
                 <div class="col-md-6">
-                  <p>{{ user.houseNo + ","+ user.city + "," + user.state }}</p>
+                  <p>{{ user.houseNo + ", "+ user.city + ", " + user.state }}</p>
                 </div>
               </div>
               <div class="row">
@@ -120,80 +118,7 @@
                   <p>{{ user.gender }}</p>
                 </div>
               </div>
-              <div
-                v-if="users.isEmp"
-                class="tab-pane fade show active"
-                role="tabpanel"
-                aria-labelledby="home-tab"
-              >
-                <!-- <div class="row">
-                <div class="col-md-6">
-                  <label>User Id</label>
-                </div>
-                <div class="col-md-6">
-                  <p>{{ user.userID }}</p>
-                </div>
-              </div> -->
-
-                <div class="row">
-                  <div class="col-md-6">
-                    <label>Current Address</label>
-                  </div>
-                  <div class="col-md-6">
-                    <p>{{ emp.houseNo + ","+ employee.city + "," + employee.state + "," + emp.pinCode }}</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <label>Marital Status</label>
-                  </div>
-                  <div class="col-md-6">
-                    <p>{{ emp.maritalStatus }}</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <label>Department Name</label>
-                  </div>
-                  <div class="col-md-6">
-                    <p>{{ emp.deptName }}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                v-else
-                class="tab-pane fade show active"
-                role="tabpanel"
-                aria-labelledby="home-tab"
-              >
-                <!-- <div class="row">
-                <div class="col-md-6">
-                  <label>User Id</label>
-                </div>
-                <div class="col-md-6">
-                  <p>{{ user.userID }}</p>
-                </div>
-              </div> -->
-
-                <div class="row">
-                  <div class="col-md-6">
-                    <label>Aadhar Number</label>
-                  </div>
-                  <div class="col-md-6">
-                    <p>{{ cust.aadharCardNumber }}</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <label>Alternate Email Address</label>
-                  </div>
-                  <div class="col-md-6">
-                    <p>{{ cust.alternateEmailAddress }}</p>
-                  </div>
-                </div>
-              </div>
-
+            </div>
             <!-- <div id="profile" class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab">
               <div class="row">
                 <div class="col-md-6">
@@ -242,7 +167,6 @@
                 </div>
               </div>
             </div> -->
-            </div>
           </div>
         </div>
       </div>
@@ -256,56 +180,35 @@ const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
-      emp: {},
-      cust: {},
       user: {}
     }
   },
   mounted () {
     // console.log('mounted')
+    console.log(localStorage.getItem('token'))
     myaxios
       .get(
-        '/dashboard'
+        '/dashboard',
+        {
+          headers: {
+            // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       )
-      .then((response) => {
-        this.users = response.data
-        if (this.users.isEmp) { this.getEmployee() } else { this.getCustomer() }
-      }
-      )
+      .then(response => (
+        this.user = response.data
+        // console.log(response.data)
+      ))
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
       })
-  },
-  methods: {
-    getEmployee () {
-      myaxios
-        .get(
-          '/dashboard/employee'
-        )
-        .then(response => (this.emp = response.data))
-        .catch((error) => {
-          this.errorMessage = error.message
-          console.error('There was an error!', error)
-        })
-    },
-
-    getCustomer () {
-      myaxios
-        .get(
-          '/dashboard/customer'
-        )
-        .then(response => (this.cust = response.data))
-        .catch((error) => {
-          this.errorMessage = error.message
-          console.error('There was an error!', error)
-        })
-    }
-
-    // console.log('got data')
+    console.log(this.user)
   }
 }
 </script>
 
 <style>
+  @import '@/assets/profile/profile.css';
 </style>
