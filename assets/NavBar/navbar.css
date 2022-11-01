@@ -13,7 +13,9 @@
 .nav-link{
     color: gray;
     font-size: 24px;
+    font-family: 'Poppins', sans-serif;
 }
 .nav-link:hover{
     color: black;
 }
+

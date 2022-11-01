@@ -1,7 +1,9 @@
 <template>
   <div>
     <NavBar />
-    <HomePage />
+    <!-- <HomePage /> -->
+    <Carousel />
+    <HotelService />
     <Footer />
   </div>
 </template>
