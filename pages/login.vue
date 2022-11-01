@@ -72,8 +72,12 @@ export default {
         pEmail: this.pEmail,
         pswd: this.pswd
       }).then(function (response) {
-        console.log(response.data)
+        // console.log(response.data.token)
+        localStorage.setItem('token', response.data.token)
+        console.log(localStorage.getItem('token'))
+        // console.log('local storage set')
       })
+      this.$router.push('dashboard')
     }
   }
 }
