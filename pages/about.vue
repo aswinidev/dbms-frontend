@@ -17,12 +17,9 @@
                 </div>
               </div>
               <h2 class="title">
-                <a href="#">Our Mission</a>
+                Our Mission
               </h2>
               <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <div class="d-flex justify-content-center">
-                <a href="#" class="btn-sm-default-web">Read more</a>
-              </div>
             </div>
           </div>
           <div class="col-md-4">
@@ -34,14 +31,11 @@
                 </div>
               </div>
               <h2 class="title">
-                <a href="#">Our Plan</a>
+                Our Plan
               </h2>
               <p>
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
               </p>
-              <div class="d-flex justify-content-center">
-                <a href="#" class="btn-sm-default-web">Read more</a>
-              </div>
             </div>
           </div>
           <div class="col-md-4">
@@ -53,12 +47,9 @@
                 </div>
               </div>
               <h2 class="title">
-                <a href="#">Our Vision</a>
+                Our Vision
               </h2>
               <p>Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
-              <div class="d-flex justify-content-center">
-                <a href="#" class="btn-sm-default-web">Read more</a>
-              </div>
             </div>
           </div>
         </div>
@@ -75,11 +66,15 @@ export default {
 </script>
 
 <style scoped>
+
+*{
+  font-family: "Poppins", sans-serif;
+}
 a:hover{
 text-decoration: none;
 }
 #about {
-background: url("https://res.cloudinary.com/munnapatel003/image/upload/v1631986250/87643.jpg") center top no-repeat fixed;
+background: url("https://cf.bstatic.com/images/hotel/840x460/201/201684636.jpg") center top no-repeat fixed;
 background-size: cover;
 padding: 29px 0 40px 0;
 position: relative;
@@ -112,7 +107,7 @@ position: absolute;
 display: block;
 width: 40px;
 height: 3px;
-background: #18d26e;
+background: #575a7b;
 bottom: 0;
 left: calc(50% - 20px);
 }
@@ -160,7 +155,7 @@ height: 64px;
 padding-top: 8px;
 text-align: center;
 position: absolute;
-background-color: #18d26e;
+background-color: #575a7b;
 border-radius: 50%;
 text-align: center;
 border: 4px solid #fff;
@@ -181,7 +176,7 @@ background-color: #fff;
 }
 
 #about .about-col:hover i {
-color: #18d26e;
+color: #575a7b;
 }
 
 #about .about-col h2 {
@@ -195,10 +190,6 @@ margin: 40px 0 12px 0;
 
 #about .about-col h2 a {
 color: #000;
-}
-
-#about .about-col h2 a:hover {
-color: #18d26e;
 }
 
 #about .about-col p {

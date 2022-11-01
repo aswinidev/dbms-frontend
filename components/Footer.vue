@@ -2,7 +2,7 @@
   <div class="footer-basic">
     <footer>
       <div class="social">
-        <a href="#"><i class="icon ion-social-instagram" /></a><a href="#"><i class="icon ion-social-snapchat" /></a><a href="#"><i class="icon ion-social-twitter" /></a><a href="#"><i class="icon ion-social-facebook" /></a>
+        <a href="#"><i class="icon ion-social-instagram" /></a><a href="#"><i class="icon ion-social-snapchat" /></a><a href="#"><i class="icon ion-social-twitter" /></a><a href="#"><i class="icon ion-social-facebook" /></a><a href="#"><i class="icon ion-email" /></a>
       </div>
       <ul class="list-inline">
         <li class="list-inline-item">
