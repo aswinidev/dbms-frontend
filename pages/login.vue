@@ -41,10 +41,7 @@
                   </div>
                   <center class="but-grp">
                     <button class="custom-btn btn-1" @click="customerLogin">
-                      <span>Customer Log In</span>
-                    </button>
-                    <button class="custom-btn btn-1">
-                      <span>Employee Log In</span>
+                      <span>Log In</span>
                     </button>
                   </center>
                 </div>

@@ -121,7 +121,7 @@
                 </div>
               </div>
               <div
-                v-if="users.isEmp"
+                v-if="noidea"
                 class="tab-pane fade show active"
                 role="tabpanel"
                 aria-labelledby="home-tab"
@@ -256,13 +256,14 @@ const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
+      noidea: true,
       emp: {},
       cust: {},
       user: {}
     }
   },
   mounted () {
-    // console.log('mounted')
+    console.log('mounted')
     myaxios
       .get(
         '/dashboard'
@@ -276,6 +277,7 @@ export default {
         this.errorMessage = error.message
         console.error('There was an error!', error)
       })
+    if (this.noidea) { this.getEmployee() } else { this.getCustomer() }
   },
   methods: {
     getEmployee () {

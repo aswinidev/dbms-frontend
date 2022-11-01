@@ -2,7 +2,7 @@
   <div class="container mt-4">
     <div class="text-center darken-grey-text mb-4">
       <h1 class="font-bold mt-4 mb-3 h1">
-        <b>My Bookings ! </b>
+        <b>Employees</b>
       </h1>
       <br>
     </div>
@@ -15,41 +15,49 @@
           <thead>
             <tr class="text-white">
               <th>#</th>
-              <th>Booking ID</th>
-              <th>Check In Date</th>
-              <th>Check Out Date</th>
-              <th>Number of Members</th>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>Current Address</th>
+              <th>Department</th>
             </tr>
           </thead>
           <!--Table head-->
           <!--Table body-->
-          <tbody v-for="(booking,index) in bookings" :key="booking.bookingID">
+          <tbody v-for="(emp,index) in employees" :key="emp.empID">
             <tr>
               <th scope="row">
                 {{ index+1 }}
               </th>
               <td>
-                {{ booking.bookingID }}
+                {{ emp.empID }}
               </td>
               <td>
-                {{ booking.checkInDate }}
+                {{ emp.fname + emp.lname }}
               </td>
               <td>
-                {{ booking.checkOutDate }}
+                {{ emp.pEmail }}
               </td>
               <td>
-                {{ booking.noOfMembers }}
+                {{ emp.gender }}
               </td>
               <td>
-                <button class="custom-btn btn-1" @click="goToFeedback()">
-                  <span>Feedback</span>
-                </button>
+                {{ emp.houseNo + "," + emp.city + "," + emp.state+ "," + emp.Pincode }}
+              </td>
+              <td>
+                {{ emp.deptName }}
               </td>
             </tr>
           </tbody>
           <!--Table body-->
         </table>
         <!--Table-->
+        <div>
+          <button class="custom-btn btn-1" @click="addEmp">
+            <span>Add Employee</span>
+          </button>
+        </div>
       </div>
     </div>
     <hr class="my-4">
@@ -71,20 +79,18 @@ const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
-      bookings: [],
-      membersList: [],
-      singleRoom: 0,
-      doubleRoomList: 0
+      employees: []
     }
   },
   mounted () {
     // console.log('mounted')
     myaxios
       .get(
-        '/dashboard/customer/bookings'
+        ''
+        // get mapping for all employees
       )
       .then((response) => {
-        this.bookings = response.data
+        this.employees = response.data
       }
       )
       .catch((error) => {
@@ -93,30 +99,19 @@ export default {
       })
   },
   methods: {
-    // getBookings () {
-    //   myaxios
-    //     .get(
-    //       '/dashboard/customer/bookings'
-    //     )
-    //     .then((response) => {
-    //       this.bookings = response.data
-    //     }
-    //     )
-    //     .catch((error) => {
-    //       this.errorMessage = error.message
-    //       console.error('There was an error!', error)
-    //     })
-    // },
-    goToFeedback () {
+    addEmp () {
       this.$router.push('')
-      // feedback page path
+      // adding employee page path
+    },
+    delEmp () {
+      this.$router.push('')
+      // deleting employee page path
     }
-
   }
 
 }
 </script>
 
-<style>
-    @import '@/assets/booking/cust_bookings.css';
-</style>
+  <style>
+      @import '@/assets/booking/cust_bookings.css';
+  </style>
