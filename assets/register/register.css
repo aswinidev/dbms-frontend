@@ -10,6 +10,7 @@ header {
 	-ms-text-size-adjust: 100%;
 	-ms-overflow-style: scrollbar;
 	-webkit-tap-highlight-color: transparent;
+	
 }
 
 textarea:focus,
@@ -18,7 +19,8 @@ input:focus {
 }
 
 .bgImg {
-	background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-371678.jpg");
+	/* background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-371678.jpg"); */
+	background-color: white;
 	background-size: cover;
 	display: block;
 	filter: grayscale(75%);
