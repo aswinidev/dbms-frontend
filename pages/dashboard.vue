@@ -1,5 +1,5 @@
 <template>
   <div>
-    <DashboardAswini />
+    <DashboardGargi />
   </div>
 </template>
