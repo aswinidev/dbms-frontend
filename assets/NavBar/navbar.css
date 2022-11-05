@@ -1,7 +1,7 @@
 .name{
     font-family: 'Lobster Two', cursive;
     /* font-weight: 700; */
-    font-size: 50px;
+    font-size: 36px;
     color: inherit;
     
 }
@@ -12,7 +12,7 @@
 
 .nav-link{
     color: gray;
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'Poppins', sans-serif;
 }
 .nav-link:hover{
