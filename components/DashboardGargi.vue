@@ -4,17 +4,13 @@
       <div class="row">
         <div class="col-md-4">
           <div class="profile-img">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="">
-            <div class="file btn btn-lg btn-primary">
-              Change Photo
-              <input type="file" name="file">
-            </div>
+            <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="">
           </div>
         </div>
         <div class="col-md-6">
           <div class="profile-head">
             <h5>
-              GG
+              {{ user.fname + " " + user.lname }}
             </h5>
             <ul id="myTab" class="nav nav-tabs" role="tablist">
               <li class="nav-item">
@@ -28,56 +24,41 @@
                   aria-selected="true"
                 >About</a>
               </li>
-              <!-- <li class="nav-item">
-                  <a
-                    id="profile-tab"
-                    class="nav-link"
-                    data-toggle="tab"
-                    href="#profile"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false"
-                  >Timeline</a>
-                </li> -->
             </ul>
           </div>
         </div>
         <div class="col-md-2">
-          <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile">
+          <nuxt-link to="/editProfile">
+            <input
+              type="submit"
+              class="profile-edit-btn"
+              name="btnAddMore"
+              value="Edit Profile"
+            >
+          </nuxt-link>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
-          <!-- <div class="profile-work">
-              <p>WORK LINK</p>
-              <a href="">Website Link</a><br>
-              <a href="">Bootsnipp Profile</a><br>
-              <a href="">Bootply Profile</a>
-              <p>SKILLS</p>
-              <a href="">Web Designer</a><br>
-              <a href="">Web Developer</a><br>
-              <a href="">WordPress</a><br>
-              <a href="">WooCommerce</a><br>
-              <a href="">PHP, .Net</a><br>
-            </div> -->
+          <div class="profile-work">
+            <p>Options</p>
+            <button type="button" class="btn btn-primary btn-block">
+              Primary
+            </button>
+            <button type="button" class="btn btn-primary btn-block">
+              Primary
+            </button>
+          </div>
         </div>
         <div class="col-md-8">
           <div id="myTabContent" class="tab-content profile-tab">
             <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
-              <!-- <div class="row">
-                <div class="col-md-6">
-                  <label>User Id</label>
-                </div>
-                <div class="col-md-6">
-                  <p>{{ user.userID }}</p>
-                </div>
-              </div> -->
               <div class="row">
                 <div class="col-md-6">
                   <label>Name</label>
                 </div>
                 <div class="col-md-6">
-                  <p>{{ user.fname + user.lname }} </p>
+                  <p>{{ user.fname + " " + user.lname }} </p>
                 </div>
               </div>
               <div class="row">
@@ -93,7 +74,7 @@
                   <label>Address</label>
                 </div>
                 <div class="col-md-6">
-                  <p>{{ user.houseNo + ","+ user.city + "," + user.state }}</p>
+                  <p>{{ user.houseNo + ", "+ user.city + ", " + user.state }}</p>
                 </div>
               </div>
               <div class="row">
@@ -126,21 +107,12 @@
                 role="tabpanel"
                 aria-labelledby="home-tab"
               >
-                <!-- <div class="row">
-                <div class="col-md-6">
-                  <label>User Id</label>
-                </div>
-                <div class="col-md-6">
-                  <p>{{ user.userID }}</p>
-                </div>
-              </div> -->
-
                 <div class="row">
                   <div class="col-md-6">
                     <label>Current Address</label>
                   </div>
                   <div class="col-md-6">
-                    <p>{{ emp.houseNo + ","+ employee.city + "," + employee.state + "," + emp.pinCode }}</p>
+                    <p>{{ emp.houseNo + ", "+ emp.city + ", " + emp.state + ", " + emp.pinCode }}</p>
                   </div>
                 </div>
                 <div class="row">
@@ -167,15 +139,6 @@
                 role="tabpanel"
                 aria-labelledby="home-tab"
               >
-                <!-- <div class="row">
-                <div class="col-md-6">
-                  <label>User Id</label>
-                </div>
-                <div class="col-md-6">
-                  <p>{{ user.userID }}</p>
-                </div>
-              </div> -->
-
                 <div class="row">
                   <div class="col-md-6">
                     <label>Aadhar Number</label>
@@ -193,55 +156,6 @@
                   </div>
                 </div>
               </div>
-
-            <!-- <div id="profile" class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab">
-              <div class="row">
-                <div class="col-md-6">
-                  <label>Experience</label>
-                </div>
-                <div class="col-md-6">
-                  <p>Expert</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label>Hourly Rate</label>
-                </div>
-                <div class="col-md-6">
-                  <p>10$/hr</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label>Total Projects</label>
-                </div>
-                <div class="col-md-6">
-                  <p>230</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label>English Level</label>
-                </div>
-                <div class="col-md-6">
-                  <p>Expert</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label>Availability</label>
-                </div>
-                <div class="col-md-6">
-                  <p>6 months</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <label>Your Bio</label><br>
-                  <p>Your detail description</p>
-                </div>
-              </div>
-            </div> -->
             </div>
           </div>
         </div>
@@ -266,24 +180,38 @@ export default {
     console.log('mounted')
     myaxios
       .get(
-        '/dashboard'
+        '/dashboard',
+        {
+          headers: {
+            // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       )
       .then((response) => {
-        this.users = response.data
-        if (this.users.isEmp) { this.getEmployee() } else { this.getCustomer() }
+        this.user = response.data
+        console.log(this.user.isEmp)
+        if (this.user.isEmp) { this.getEmployee() } else { this.getCustomer() }
+        this.noidea = this.user.isEmp
       }
       )
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
       })
-    if (this.noidea) { this.getEmployee() } else { this.getCustomer() }
+    // if (this.noidea) { this.getEmployee() } else { this.getCustomer() }
   },
   methods: {
     getEmployee () {
       myaxios
         .get(
-          '/dashboard/employee'
+          '/dashboard/employee',
+          {
+            headers: {
+            // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          }
         )
         .then(response => (this.emp = response.data))
         .catch((error) => {
@@ -295,7 +223,13 @@ export default {
     getCustomer () {
       myaxios
         .get(
-          '/dashboard/customer'
+          '/dashboard/customer',
+          {
+            headers: {
+            // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          }
         )
         .then(response => (this.cust = response.data))
         .catch((error) => {

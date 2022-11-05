@@ -52,17 +52,6 @@
                     </span>
                     <span>
                       <input
-                        v-model="pswd"
-                        type="password"
-                        class="form"
-                        placeholder="Password"
-                        autocomplete="off"
-                        style="cursor: auto;"
-                      >
-                      <span class="underline" />
-                    </span>
-                    <span>
-                      <input
                         v-model="houseNo"
                         type="text"
                         class="form"
@@ -175,7 +164,6 @@ export default {
       fname: '',
       lname: '',
       pEmail: '',
-      pswd: '',
       houseNo: '',
       state: '',
       city: '',
@@ -190,14 +178,21 @@ export default {
   mounted () {
     myaxios
       .get(
-        '/edit-profile'
-        // get mapping for userCustomer
+        '/edit-profile',
+        // get mapping for userCustomer,
+        {
+          headers: {
+            // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       )
       .then((response) => {
+        console.log('mounted')
+
         this.fname = response.data.fname
         this.lname = response.data.lname
         this.pEmail = response.data.pEmail
-        this.pswd = response.data.pswd
         this.houseNo = response.data.houseNo
         this.state = response.data.state
         this.city = response.data.city
@@ -216,10 +211,14 @@ export default {
   methods: {
     register () {
       myaxios.post('/edit-profile', {
+        headers: {
+          // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }, {
         fname: this.fname,
         lname: this.lname,
         pEmail: this.pEmail,
-        pswd: this.pswd,
         houseNo: this.houseNo,
         state: this.state,
         city: this.city,
