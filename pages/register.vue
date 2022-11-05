@@ -126,6 +126,28 @@
                       >
                       <span class="underline" />
                     </span>
+                    <span>
+                      <input
+                        v-model="alternateEmailAddress"
+                        type="text"
+                        class="form"
+                        placeholder="Alternate Email Address"
+                        autocomplete="off"
+                        style="cursor: auto;"
+                      >
+                      <span class="underline" />
+                    </span>
+                    <span>
+                      <input
+                        v-model="aadharCardNumber"
+                        type="text"
+                        class="form"
+                        placeholder="Aadhar Card Number"
+                        autocomplete="off"
+                        style="cursor: auto;"
+                      >
+                      <span class="underline" />
+                    </span>
                   </div>
                   <center>
                     <button class="custom-btn btn-1" @click="register">
@@ -158,7 +180,9 @@ export default {
       city: '',
       country: '',
       pinCode: '',
-      gender: ''
+      gender: '',
+      alternateEmailAddress: '',
+      aadharCardNumber: ''
     }
   },
   methods: {
@@ -173,7 +197,9 @@ export default {
         city: this.city,
         country: this.country,
         pinCode: this.pinCode,
-        gender: this.gender
+        gender: this.gender,
+        alternateEmailaddress: this.alternateEmailaddress,
+        aadharCardNumber: this.aadharCardNumber
       }).then(function (response) {
         console.log(response.data)
       })
