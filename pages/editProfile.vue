@@ -47,6 +47,7 @@
                         placeholder="Email"
                         autocomplete="off"
                         style="cursor: auto;"
+                        disabled
                       >
                       <span class="underline" />
                     </span>
@@ -107,17 +108,6 @@
                     </span>
                     <span>
                       <input
-                        v-model="gender"
-                        type="text"
-                        class="form"
-                        placeholder="Gender"
-                        autocomplete="off"
-                        style="cursor: auto;"
-                      >
-                      <span class="underline" />
-                    </span>
-                    <span>
-                      <input
                         v-model="alternateEmailAddress"
                         type="text"
                         class="form"
@@ -169,10 +159,8 @@ export default {
       city: '',
       country: '',
       pinCode: '',
-      gender: '',
       alternateEmailAddress: '',
       aadharCardNumber: ''
-
     }
   },
   mounted () {
@@ -198,7 +186,6 @@ export default {
         this.city = response.data.city
         this.country = response.data.country
         this.pinCode = response.data.pinCode
-        this.gender = response.data.gender
         this.alternateEmailAddress = response.data.alternateEmailAddress
         this.aadharCardNumber = response.data.aadharCardNumber
       }
@@ -211,11 +198,6 @@ export default {
   methods: {
     register () {
       myaxios.post('/edit-profile', {
-        headers: {
-          // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      }, {
         fname: this.fname,
         lname: this.lname,
         pEmail: this.pEmail,
@@ -224,9 +206,14 @@ export default {
         city: this.city,
         country: this.country,
         pinCode: this.pinCode,
-        gender: this.gender,
         alternateEmailAddress: this.alternateEmailAddress,
         aadharCardNumber: this.aadharCardNumber
+      },
+      {
+        headers: {
+          // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       }).then(function (response) {
         console.log(response.data)
       })

@@ -27,7 +27,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-2">
+        <div v-if="!noidea" class="col-md-2">
           <nuxt-link to="/editProfile">
             <input
               type="submit"
@@ -42,12 +42,28 @@
         <div class="col-md-4">
           <div class="profile-work">
             <p>Options</p>
-            <button type="button" class="btn btn-primary btn-block">
-              Primary
-            </button>
-            <button type="button" class="btn btn-primary btn-block">
-              Primary
-            </button>
+            <div v-if="noidea">
+              <div v-if="isAdmin">
+                <nuxt-link to="/admin">
+                  <button type="button" class="btn btn-primary btn-block">
+                    Admin
+                  </button>
+                </nuxt-link>
+              </div>
+              <nuxt-link to="/employee/subordinates">
+                <button type="button" class="btn btn-primary btn-block">
+                  Subordinates
+                </button>
+              </nuxt-link>
+            </div>
+            <div v-else>
+              <button type="button" class="btn btn-primary btn-block" @click="navigateContactUs">
+                ContactUs
+              </button>
+              <button type="button" class="btn btn-primary btn-block" @click="navigateBookings">
+                Booking
+              </button>
+            </div>
           </div>
         </div>
         <div class="col-md-8">
@@ -171,6 +187,7 @@ export default {
   data () {
     return {
       noidea: true,
+      isAdmin: false,
       emp: {},
       cust: {},
       user: {}
@@ -213,7 +230,12 @@ export default {
             }
           }
         )
-        .then(response => (this.emp = response.data))
+        .then((response) => {
+          this.emp = response.data
+          if (this.emp.superID == null) {
+            this.isAdmin = true
+          }
+        })
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
@@ -226,7 +248,6 @@ export default {
           '/dashboard/customer',
           {
             headers: {
-            // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
               Authorization: `Bearer ${localStorage.getItem('token')}`
             }
           }
@@ -236,9 +257,13 @@ export default {
           this.errorMessage = error.message
           console.error('There was an error!', error)
         })
+    },
+    navigateContactUs () {
+      this.$router.push('contactus')
+    },
+    navigateBookings () {
+      this.$router.push('bookings')
     }
-
-    // console.log('got data')
   }
 }
 </script>
