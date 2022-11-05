@@ -5,30 +5,30 @@
         <span>Contact Us</span>
       </div>
       <div class="form-line">
-        <input type="" class="form-input" required>
-        <label>Name</label>
+        <input type="text" class="form-input" required>
+        <label style="font-size: 18px;">Name</label>
       </div>
       <div class="form-line">
         <input type="" class="form-input" required>
-        <label>Contact Number</label>
+        <label style="font-size: 18px;">Contact Number</label>
       </div>
       <div class="form-line">
         <input type="Email" class="form-input" required>
-        <label>Email</label>
+        <label style="font-size: 18px;">Email</label>
       </div>
       <div class="form-line">
-        <textarea class="form-input" required />
-        <label>Query</label>
+        <textarea class="form-input" required rows="10" />
+        <label style="font-size: 18px;">Query</label>
       </div>
-      <input type="button" class="form-button" value="Submit">
+      <input type="button" class="form-button" value="Submit" style="font-size: 18px;">
     </form>
   </div>
 </template>
 
-  <style scoped>
+<style scoped>
   * {
     box-sizing: border-box;
-    font-family: "Tahoma", sans-serif;
+    font-family: "Poppins", sans-serif;
     line-height: 1;
   }
   body {
@@ -146,7 +146,6 @@
     right: 1px;
     top: 7px;
   }
-
   .form-line.success .form-input {
     border-bottom-color: #35ca7c;
   }
@@ -162,14 +161,13 @@
     opacity: 1;
     visibility: visible;
   }
-
   .headline {
     display: block;
     text-align: center;
     margin-bottom: 40px;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 28px;
     letter-spacing: 5px;
     position: relative;
   }
@@ -181,13 +179,12 @@
     content: "";
     position: absolute;
     z-index: 1;
-    background-color: rgba(175, 253, 198, 0.5);
+    background-color: lightgrey;
     height: 12px;
-    width: 155px;
+    width: 220px;
     bottom: -3px;
     left: 5px;
   }
-
   .form-button {
     border: none;
     outline: none;
@@ -195,10 +192,10 @@
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    color: #000;
+    color: white;
     border-radius: 3px;
     cursor: pointer;
-    background: #8cf1d0;
+    background: lightgrey;
     display: block;
     transition: 0.3s all ease;
     position: absolute;
@@ -206,13 +203,12 @@
     letter-spacing: 2px;
   }
   .form-button:hover {
-    background-color: #78e6c2;
+    background-color: black;
     -webkit-box-shadow: 0px 10px 25px 0px rgba(72, 72, 72, 0.1);
     -moz-box-shadow: 0px 10px 25px 0px rgba(72, 72, 72, 0.1);
     box-shadow: 0px 10px 25px 0px rgba(72, 72, 72, 0.1);
     bottom: 45px;
   }
-
   @media (max-width: 500px) {
     .form-container {
       width: 300px;
@@ -227,5 +223,4 @@
       bottom: 30px;
     }
   }
-  </style>
-</template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template></template>
+</style>
