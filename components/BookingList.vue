@@ -29,7 +29,7 @@
             <i class="fas fa-building" />
             <p />
           </div>
-          <button class="custom-btn btn-1" @click="goToDeatils">
+          <button class="custom-btn btn-1" @click="goToDetails">
             <span>ViewDetails</span>
           </button>
         </div>
@@ -40,10 +40,9 @@
 
 <script>
 export default {
-  data () {
-    return {
-      props: ['bookingid', 'checkin', 'checkout']
-    }
+  props: ['bookingid', 'checkin', 'checkout'],
+  mounted () {
+    console.log('t')
   },
   methods: {
     goToDetails (event) {

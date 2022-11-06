@@ -183,6 +183,10 @@ body {
     transition: 0.2s all;
 }
 
+.booking-form .submit-btn .final{
+    margin-top: 30px;
+}
+
 .booking-form .submit-btn:hover,
 .booking-form .submit-btn:focus {
     opacity: 0.9;
@@ -199,4 +203,8 @@ body {
     position: absolute;
     left: 15px;
     bottom: 15px
+}
+
+.fieldLabel {
+    color: white;
 }
