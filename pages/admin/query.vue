@@ -1,22 +1,13 @@
 <template>
   <div>
-    <NavBar />
-    <div v-if="getDetails==false">
-      <div class="row justify-content-between" style="margin-left: 185px">
-        <div class="col-4">
-          <h1>Employee List</h1>
-        </div>
-        <div class="col-4">
-          <b-button variant="dark">
-            Add Employee
-          </b-button>
-        </div>
+    <div v-if="getDetails===false">
+      <div class="page">
+        <h1>Customer Queries</h1>
       </div>
-      <!-- <EmployeeList /> -->
-      <EmployeeList
-        v-for="employee in employees"
-        :key="employee.employeeID"
-        :employeeid="employee.employeeID"
+      <BookingList
+        v-for="booking in bookings"
+        :key="booking.bookingID"
+        :bookingid="booking.bookingID"
         :checkin="booking.checkInDate"
         :checkout="booking.checkOutDate"
         @clicked="onClickListItem(booking.bookingID)"
@@ -26,22 +17,17 @@
       <button class="custom-btn btn-1" @click="goBacktoPage">
         <span>Back</span>
       </button>
-      <EmployeeDetails :bookingid="id" />
+      <BookingDetails :bookingid="id" />
     </div>
-
-    <Footer />
   </div>
 </template>
 
 <script>
-import EmployeeList from '~/components/EmployeeList.vue'
-
 export default {
-  components: { EmployeeList },
   data () {
     return {
       getDetails: false,
-      employees: [],
+      bookings: [],
       id: ''
     }
   },
@@ -57,6 +43,7 @@ export default {
       this.getDetails = false
     }
   }
+
 }
 </script>
 

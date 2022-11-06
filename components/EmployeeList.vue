@@ -1,9 +1,9 @@
 <template>
   <section>
     <div class="container">
-      <h1 style="text-align: center; margin-bottom: 40px;">
+      <!-- <h1 style="text-align: center; margin-bottom: 40px;">
         Employee List
-      </h1>
+      </h1> -->
       <div class="request-details">
         <div class="company">
           <div class="placeholder">
