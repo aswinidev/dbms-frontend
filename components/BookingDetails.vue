@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="nights">
-              {{ booking.noOfMembers }}
+              {{ booking.countMember }}
             </span>
           </div>
         </div>
@@ -56,7 +56,7 @@
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="nights">
-              {{ singleRooms }}
+              {{ booking.singleRoom }}
             </span>
           </div>
         </div>
@@ -68,12 +68,12 @@
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="nights">
-              {{ doubleRooms }}
+              {{ booking.doubleRoom }}
             </span>
           </div>
         </div>
 
-        <div class="row card-row total">
+        <!-- <div class="row card-row total">
           <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
             <span class="earnings">
               Total Price
@@ -84,37 +84,18 @@
               {{ booking.price }}
             </span>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </center>
 </template>
 
 <script>
-import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
-  data () {
-    return {
-      props: ['id'],
-      booking: {}
-    }
-  },
+  props: ['booking'],
   mounted () {
+    console.log(this.booking.bookingid)
     // getmapping for the passed bookingID
-    myaxios
-      .post(
-        '/', { bookingID: this.id }
-        // get mapping for given booking
-      )
-      .then((response) => {
-        this.booking = response.data
-      }
-      )
-      .catch((error) => {
-        this.errorMessage = error.message
-        console.error('There was an error!', error)
-      })
   }
 
 }
