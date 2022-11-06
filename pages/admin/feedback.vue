@@ -1,5 +1,5 @@
 <template>
   <div>
-    <Feedback />
+    feedback
   </div>
 </template>
