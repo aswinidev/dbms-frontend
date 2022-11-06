@@ -1,5 +1,7 @@
 <template>
   <div>
-    feedback
+    <NavBar />
+    <Feedback />
+    <Footer />
   </div>
 </template>

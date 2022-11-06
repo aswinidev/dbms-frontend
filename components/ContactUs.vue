@@ -1,27 +1,32 @@
 <template>
-  <div class="container">
-    <form class="form-container">
-      <div class="headline">
-        <span>Contact Us</span>
+  <div>
+    <section class="content">
+      <div class="feedback-description">
+        <h1 class="title">
+          Have a question?
+        </h1>
+        <p class="subtitle">
+          Leave a message and we will help!
+        </p>
       </div>
-      <div class="form-line">
-        <label style="font-size: 18px;">Name</label><br><br>
-        <input v-model="name" type="text" class="form-input" required>
-      </div>
-      <div class="form-line">
-        <label style="font-size: 18px;">Contact Number</label><br><br>
-        <input v-model="contactNumber" type="" class="form-input" required>
-      </div>
-      <div class="form-line">
-        <label style="font-size: 18px;">Email</label><br><br>
-        <input v-model="emailID" type="Email" class="form-input" required>
-      </div>
-      <div class="form-line">
-        <label style="font-size: 18px;">Query</label><br><br>
-        <textarea v-model="query" class="form-input" required rows="10" />
-      </div>
-      <input type="button" class="form-button" value="Submit" style="font-size: 18px;" @click="sendQuery">
-    </form>
+      <form class="feedback-form" @submit.prevent>
+        <input v-model="name" class="feedback-form__email" placeholder="Name" required="">
+        <input v-model="emailID" class="feedback-form__email" placeholder="Email ID" required="">
+        <input v-model="contactNumber" class="feedback-form__email" placeholder="Contact Number" required="">
+        <textarea
+          v-model="query"
+          class="feedback-form__message"
+          cols="30"
+          name="text"
+          placeholder="Query"
+          required=""
+          rows="5"
+        />
+        <button @click="sendQuery">
+          Submit
+        </button>
+      </form>
+    </section>
   </div>
 </template>
 
@@ -39,6 +44,7 @@ export default {
   },
   methods: {
     sendQuery () {
+      console.log(this.name + ' ' + this.contactNumber + ' ' + this.query + ' ' + this.emailID)
       myaxios
         .post('/contactus',
           {
@@ -68,200 +74,101 @@ export default {
 
 <style scoped>
   * {
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    line-height: 1;
-  }
-  body {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, rgb(5, 231, 157), rgb(83, 192, 251));
-  }
-  .container {
-    max-width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
+  font-weight: 300;
+  font-family: "Roboto", "Segoe Ui", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 29px;
+  color: #5b6d91;
+  margin: 0;
+}
+
+section {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ecf2f7;
+}
+
+button {
+  font-size: 14px;
+  background-color: darkslategrey;
+  padding: 12px 26px;
+  border-radius: 40px;
+  width: auto;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.08);
+}
+button:hover{
+  background-color: black;
+}
+
+textarea,
+input {
+  border: none;
+  background-image: none;
+  background-color: #fff;
+  box-shadow: none;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 10px;
+  border: 0px;
+  resize: none;
+  box-shadow: 0px 7px 7px 0px rgba(0, 0, 0, 0.04);
+}
+
+input:hover,
+input:focus {
+  color: #000;
+}
+
+.content {
+  height: 100vh;
+  padding-top: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  max-width: 980px;
+  justify-content: center;
+}
+.content .feedback-description {
+  max-width: 310px;
+  padding-bottom: 72px;
+}
+.content .feedback-description .subtitle {
+  font-size: 16px;
+}
+.content .feedback-form {
+  min-width: 280px;
+  padding-left: 64px;
+  display: flex;
+  flex-direction: column;
+}
+.content .feedback-form * {
+  margin-bottom: 16px;
+}
+.content .feedback-form button {
+  align-self: flex-end;
+}
+
+@media screen and (max-width: 674px) {
+  .content {
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    padding-top: 40px;
-    padding-bottom: 40px;
   }
-  .form-container {
-    display: flex;
-    justify-content: center;
-    flex-flow: wrap;
-    background-color: #fff;
-    width: 600px;
-    padding: 60px 60px 140px;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-    position: relative;
+  .content .feedback-form {
+    padding-left: 0;
   }
-  .form-line {
-    width: 100%;
-    display: block;
-    position: relative;
-    transition: 0.3s all ease;
-    padding-top: 10px;
-  }
-  .form-line + .form-line {
-    margin-top: 30px;
-  }
-  .form-line label {
-    display: block;
-    position: absolute;
-    top: 15px;
-    left: 0;
-    font-size: 14px;
-    color: #ccc;
-    transition: 0.3s all ease;
-    z-index: 1;
-  }
-  .form-input {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid #ccc;
-    padding: 0 0 10px;
-    font-size: 16px;
-    color: #000;
-    outline: none;
-    position: relative;
-    z-index: 2;
-    background-color: transparent;
-    transition: 0.3s all ease;
+
+  button {
     width: 100%;
   }
-  textarea.form-input {
-    resize: vertical;
-  }
-  .form-input:focus + label,
-  .form-line label.top {
-    font-size: 10px;
-    top: -10px;
-    color: #2f4231;
-  }
-  .form-input:focus {
-    border-bottom-color: #2f4231;
-  }
-  .error-label,
-  .check-label {
-    font-size: 10px;
-    position: absolute;
-    bottom: 10px;
-    right: 0;
-    color: #fff;
-    padding: 3px;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s all ease;
-    border-radius: 2px;
-  }
-  .error-label {
-    background-color: #f75e5e;
-  }
-  .check-label {
-    background-color: #35ca7c;
-    width: 16px;
-    height: 16px;
-  }
-  .check-label:after,
-  .check-label:before {
-    position: absolute;
-    content: "";
-    background-color: #fff;
-    height: 2px;
-  }
-  .check-label:after {
-    width: 5px;
-    transform: rotate(20deg);
-    bottom: 4px;
-    left: 4px;
-  }
-  .check-label:before {
-    width: 10px;
-    transform: rotate(110deg);
-    right: 1px;
-    top: 7px;
-  }
-  .form-line.success .form-input {
-    border-bottom-color: #35ca7c;
-  }
-  .form-line.error label {
-    color: #f75e5e;
-  }
-  .form-line.error .form-input {
-    color: #4e0c0c;
-    border-bottom-color: #f75e5e;
-  }
-  .form-line.error .error-label,
-  .form-line.success .check-label {
-    opacity: 1;
-    visibility: visible;
-  }
-  .headline {
-    display: block;
-    text-align: center;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 28px;
-    letter-spacing: 5px;
-    position: relative;
-  }
-  .headline span {
-    position: relative;
-    z-index: 2;
-  }
-  .headline:before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    background-color: lightgrey;
-    height: 12px;
-    width: 220px;
-    bottom: -3px;
-    left: 5px;
-  }
-  .form-button {
-    border: none;
-    outline: none;
-    padding: 20px 60px;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    color: white;
-    border-radius: 3px;
-    cursor: pointer;
-    background: lightgrey;
-    display: block;
-    transition: 0.3s all ease;
-    position: absolute;
-    bottom: 40px;
-    letter-spacing: 2px;
-  }
-  .form-button:hover {
-    background-color: black;
-    -webkit-box-shadow: 0px 10px 25px 0px rgba(72, 72, 72, 0.1);
-    -moz-box-shadow: 0px 10px 25px 0px rgba(72, 72, 72, 0.1);
-    box-shadow: 0px 10px 25px 0px rgba(72, 72, 72, 0.1);
-    bottom: 45px;
-  }
-  @media (max-width: 500px) {
-    .form-container {
-      width: 300px;
-      padding: 30px 20px 100px;
-    }
-    .form-button {
-      bottom: 25px;
-      padding-top: 15px;
-      padding-bottom: 15px;
-    }
-    .form-button:hover {
-      bottom: 30px;
-    }
-  }
+}
 </style>
