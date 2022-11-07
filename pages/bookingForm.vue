@@ -187,7 +187,8 @@ export default {
       flag: false,
       sadaTrue: true,
       size: 0,
-      booked: false
+      booked: false,
+      genBill: {}
       // numMembers: 0
     }
   },
@@ -256,8 +257,9 @@ export default {
         }
       }).then((response) => {
         console.log(response.data)
+        this.genBill = response.data
         this.booked = true
-        console.log(response.data)
+        this.$router.push({ name: 'bill', params: { genBill: this.genBill } })
 
         // if (response.data) { this.$router.push('index') }
       }).catch((error) => {
