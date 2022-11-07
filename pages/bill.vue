@@ -39,13 +39,13 @@
           Single Rooms
         </td>
         <td>
-          {{ numSingle }}
+          {{ genBill.singleRoom }}
         </td>
         <td>
-          {{ singlePrice }}
+          {{ genBill.singlePrice }}
         </td>
         <td>
-          {{ singlePrice * numSingle }}
+          {{ genBill.singlePrice * genBill.singleRoom }}
         </td>
       </tr>
       <tr id="whiteBG">
@@ -53,13 +53,13 @@
           Double Rooms
         </td>
         <td>
-          {{ numDouble }}
+          {{ genBill.doubleRoom }}
         </td>
         <td>
-          {{ doublePrice }}
+          {{ genBill.doublePrice }}
         </td>
         <td>
-          {{ numDouble * doublePrice }}
+          {{ genBill.doubleRoom * genBill.doublePrice }}
         </td>
       </tr>
       <tr>
@@ -67,13 +67,13 @@
           GRANDTOTAL
         </td>
         <td id="whiteBG">
-          Rs + {{ amount }}
+          Rs + {{ genBill.amount }}
         </td>
       </tr>
     </table>
     <center>
       <button class="custom-btn btn-1" @click="Pay">
-        <span>Pay {{ amount }}</span>
+        <span>{{ "Pay " + genBill.amount }}</span>
       </button>
     </center>
   </div>
@@ -92,3 +92,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@import '@/assets/bill/bill.css'
+</style>
