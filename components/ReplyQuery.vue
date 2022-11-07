@@ -3,14 +3,14 @@
     <section class="content">
       <div class="feedback-description">
         <h1 class="title">
-          {{ name }}
+          {{ query.name }}
         </h1>
         <p class="subtitle">
-          {{ emailID }}
+          {{ query.emailID }}
         </p>
       </div>
-      <form class="feedback-form">
-        <input class="feedback-form__email" :placeholder="query" disabled>
+      <form class="feedback-form" @submit.prevent>
+        <input class="feedback-form__email" :placeholder="query.query" disabled>
         <textarea
           v-model="reply"
           class="feedback-form__message"
@@ -20,7 +20,7 @@
           required=""
           rows="5"
         />
-        <button class="feedback-form__submit">
+        <button @click="replyQuery">
           Reply
         </button>
       </form>
@@ -32,19 +32,22 @@
 import axios from 'axios'
 const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
+  props: ['query'],
   data () {
     return {
-      props: ['queryID', 'query', 'name', 'emailID'],
       reply: ''
     }
+  },
+  mounted () {
+    console.log(this.query)
   },
   methods: {
     replyQuery () {
       myaxios
         .post(
-          '/addReply',
+          '/admin/addReply',
           {
-            queryID: this.queryID,
+            queryID: this.query.queryID,
             reply: this.reply
           },
           {
@@ -62,12 +65,16 @@ export default {
 </script>
 
 <style scoped>
-* {
+  * {
   font-weight: 300;
   font-family: "Roboto", "Segoe Ui", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 29px;
   color: #5b6d91;
   margin: 0;
+}
+
+section {
+  height: 100vh;
 }
 
 body {
@@ -78,14 +85,17 @@ body {
 
 button {
   font-size: 14px;
-  background-color: #FDD85F;
+  background-color: darkslategrey;
   padding: 12px 26px;
   border-radius: 40px;
   width: auto;
-  color: #3b4a67;
+  color: white;
   border: none;
   cursor: pointer;
   box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.08);
+}
+button:hover{
+  background-color: black;
 }
 
 textarea,
@@ -108,8 +118,8 @@ input:focus {
 }
 
 .content {
-  padding-top: 48px;
-  position: absolute;
+  height: 100vh;
+  padding-top: 30px;
   top: 0;
   left: 0;
   right: 0;
