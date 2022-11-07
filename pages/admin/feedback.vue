@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar />
-    <Feedback />
+    <AllFeedback />
     <Footer />
   </div>
 </template>

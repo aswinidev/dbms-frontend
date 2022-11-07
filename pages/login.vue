@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NavBar />
     <div class="bgImg" />
     <div class="content">
       <div class="d-flex h-100 align-items-center justify-content-center">
@@ -51,6 +52,7 @@
         </div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 <script>

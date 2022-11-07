@@ -1,49 +1,27 @@
 <template>
   <div>
-    <NavBar />
-    <div v-if="getDetails===false" style="height: 100vh">
+    <div v-if="getDetails===false">
       <div class="row justify-content-between" style="text-align:center; margin-top: 40px">
         <div class="col-4">
-          <h1>My Bookings</h1>
-        </div>
-        <div class="col-4">
-          <b-button size="lg" variant="dark" href="/bookingForm">
-            Add Booking
-          </b-button>
+          <h1>Feedbacks</h1>
         </div>
       </div>
-
-      <!-- <div class="page">
-        <div class="buttons">
-          <a class="btn add-new" href="/booking-form">Add New Booking</a>
-        </div>
-      </div>
-      <h1 style="text-align:center">
-        My Bookings
-      </h1> -->
-      <!-- <BookingList /> -->
-      <BookingList
-        v-for="booking in bookings"
-        :key="booking.bookingID"
-        :bookingid="booking.bookingID"
-        :checkin="booking.checkInDate"
-        :checkout="booking.checkOutDate"
-        @clicked="onClickListItem(booking)"
+      <!-- <FeedbackList /> -->
+      <FeedbackList
+        v-for="feedback in feedbacks"
+        :key="feedback.feedbackID"
+        :feedbackid="feedback.feedbackID"
+        :date="feedback.fDate"
+        :time="feedback.fTime"
+        @clicked="onClickListItem(feedback)"
       />
-      <!-- <div v-for="booking in bookings" :key="booking.bookingID">
-        {{ booking.bookingID }}
-      </div> -->
     </div>
     <div v-else>
       <b-button size="lg" variant="dark" @click="goBacktoPage">
         <span>Back</span>
       </b-button>
-      <!-- <button class="custom-btn btn-1" @click="goBacktoPage">
-        <span>Back</span>
-      </button> -->
-      <BookingDetails :booking="booking" />
+      <FeedbackDetails :feedback="feedback" />
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -54,15 +32,15 @@ export default {
   data () {
     return {
       getDetails: false,
-      bookings: [],
-      booking: {}
+      feedbacks: [],
+      feedback: {}
     }
   },
   mounted () {
     // getmapping
     myaxios
       .get(
-        '/customer/booking', // get mapping for all bookings
+        '/', // get mapping for all feedback
         {
           headers: {
           // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
@@ -72,8 +50,8 @@ export default {
 
       )
       .then((response) => {
-        this.bookings = response.data
-        console.log(JSON.stringify(this.bookings))
+        this.feedbacks = response.data
+        console.log(JSON.stringify(this.feedbacks))
       }
       )
       .catch((error) => {
@@ -84,8 +62,8 @@ export default {
   methods: {
     onClickListItem (value) {
       this.getDetails = true
-      this.booking = value
-      console.log(this.id)
+      this.feedback = value
+      console.log(this.feedback)
     },
     goBacktoPage () {
       this.getDetails = false
