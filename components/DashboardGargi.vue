@@ -50,7 +50,8 @@
                   </button>
                 </nuxt-link>
               </div>
-              <nuxt-link to="/employee/subordinates">
+              <!-- /employee/subordinates -->
+              <nuxt-link to="/subord">
                 <button type="button" class="btn btn-primary btn-block">
                   Subordinates
                 </button>
@@ -128,7 +129,7 @@
                     <label>Current Address</label>
                   </div>
                   <div class="col-md-6">
-                    <p>{{ emp.houseNo + ", "+ emp.city + ", " + emp.state + ", " + emp.pinCode }}</p>
+                    <p>{{ emp.currHouseNo + ", "+ emp.currCity + ", " + emp.currState + ", " + emp.currPinCode }}</p>
                   </div>
                 </div>
                 <div class="row">
@@ -207,6 +208,7 @@ export default {
       )
       .then((response) => {
         this.user = response.data
+        console.log(this.user)
         console.log(this.user.isEmp)
         if (this.user.isEmp) { this.getEmployee() } else { this.getCustomer() }
         this.noidea = this.user.isEmp
