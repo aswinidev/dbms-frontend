@@ -2,7 +2,7 @@
   <center>
     <div class="col-md-6 col-sm-6 ">
       <div class="chunk booking-card clearfix">
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-3 col-sm-3 col-xs-3">
             <span class="profile-pic" />
           </div>
@@ -11,83 +11,116 @@
               {{ booking.bookingID }}
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="row card-row">
           <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
             <span class="check-in">
-              Check In Date
+              First Name
             </span>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="check-in-date">
-              {{ booking.checkInDate }}
+              {{ subord.fname }}
+            </span>
+          </div>
+        </div>
+        <div class="row card-row">
+          <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
+            <span class="check-in">
+              Last Name
+            </span>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-8 card-data">
+            <span class="check-in-date">
+              {{ subord.lname }}
             </span>
           </div>
         </div>
         <div class="row card-row">
           <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
             <span class="check-out">
-              Check Out Date
+              Email
             </span>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="check-out-date">
-              {{ booking.checkOutDate }}
+              {{ subord.pemail }}
             </span>
           </div>
         </div>
         <div class="row card-row">
           <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
             <span class="Details">
-              Number Of Members
+              Gender
             </span>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="nights">
-              {{ booking.countMember }}
+              {{ subord.gender }}
             </span>
           </div>
         </div>
         <div class="row card-row">
           <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
             <span class="Details">
-              Number Of Single Rooms
+              Permanent Address
             </span>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="nights">
-              {{ booking.singleRoom }}
+              {{ subord.houseNo + " "+ subord.city+ " "+subord.state+ " "+subord.country+ " "+subord.pinCode }}
             </span>
           </div>
         </div>
         <div class="row card-row">
           <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
             <span class="Details">
-              Number Of Double Rooms
+              Current Address
             </span>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="nights">
-              {{ booking.doubleRoom }}
+              {{ subord.currHouseNo + " "+ subord.currCity+ " "+subord.currState+ " "+subord.currPinCode }}
             </span>
           </div>
         </div>
-        <button class="custom-btn btn-1" @click="goToFeedback">
-          <span>Give Feedback</span>
-        </button>
+        <div class="row card-row">
+          <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
+            <span class="Details">
+              Salary
+            </span>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-8 card-data">
+            <span class="nights">
+              {{ subord.salary }}
+            </span>
+          </div>
+        </div>
+        <div class="row card-row">
+          <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
+            <span class="Details">
+              Current Address
+            </span>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-8 card-data">
+            <span class="nights">
+              {{ subord.deptName }}
+            </span>
+          </div>
+        </div>
 
         <!-- <div class="row card-row total">
-          <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
-            <span class="earnings">
-              Total Price
-            </span>
-          </div>
-          <div class="col-md-9 col-sm-9 col-xs-8 card-data">
-            <span class="earnings-total">
-              {{ booking.price }}
-            </span>
-          </div>
-        </div> -->
+            <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
+              <span class="earnings">
+                Total Price
+              </span>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-8 card-data">
+              <span class="earnings-total">
+                {{ booking.price }}
+              </span>
+            </div>
+          </div> -->
       </div>
     </div>
   </center>
@@ -95,20 +128,15 @@
 
 <script>
 export default {
-  props: ['booking'],
+  props: ['subord'],
   mounted () {
     console.log(this.booking.bookingid)
     // getmapping for the passed bookingID
-  },
-  methods: {
-    goToFeedback () {
-      this.$router.push({ name: 'feedbackForm', params: { bookingid: this.booking.bookingID } })
-    }
   }
 
 }
 </script>
 
-<style>
-@import "@/assets/booking/bookingDetails.css"
-</style>
+  <style>
+  @import "@/assets/booking/bookingDetails.css"
+  </style>

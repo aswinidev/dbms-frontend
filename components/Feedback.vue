@@ -5,18 +5,49 @@
         <span>Feedback</span>
       </div>
       <div class="form-line">
-        <textarea class="form-input" required />
+        <textarea v-model="review" class="form-input" required />
         <label>Review</label>
       </div>
       <div class="form-line">
-        <textarea class="form-input" required />
+        <textarea v-model="suggestion" class="form-input" required />
         <label>Suggestion</label>
       </div>
 
-      <input type="button" class="form-button" value="Submit">
+      <input type="button" class="form-button" value="Submit" @click="sendFeedback">
     </form>
   </div>
 </template>
+
+<script>
+import axios from 'axios'
+const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+export default {
+  props: ['bookingid'],
+  data () {
+    return {
+      suggestion: '',
+      review: ''
+    }
+  },
+  methods: {
+    sendFeedback () {
+      myaxios.post('/feedback', {
+        bookingID: this.bookingid,
+        reviews: this.review,
+        suggestions: this.suggestion
+      },
+      {
+        headers: {
+          // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }).then(function (response) {
+        console.log(response.data)
+      })
+    }
+  }
+}
+</script>
 
 <style scoped>
 * {
