@@ -15,7 +15,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Island+Moments&family=Lobster+Two:ital,wght@1,700&family=Poppins&family=Shalimar&display=swap'
+        href: 'https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Island+Moments&family=Lobster+Two:ital,wght@1,700&family=Poppins&family=Shalimar&display=swap'
       }
     ]
   },
