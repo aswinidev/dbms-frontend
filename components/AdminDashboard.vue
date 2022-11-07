@@ -1,5 +1,5 @@
 <template>
-  <div class="page-content">
+  <div class="page-content" style="height: 68vh">
     <div class="card card-1">
       <div class="content">
         <h2 class="title">
@@ -22,7 +22,10 @@
           Review Customer Feedback and reply Customer Queries
         </p>
         <button class="btn" @click="manageFeedback">
-          Manage
+          View Feedback
+        </button>
+        <button class="btn" @click="manageQuery">
+          Reply Query
         </button>
       </div>
     </div>
@@ -53,6 +56,9 @@ export default {
     },
     manageFeedback () {
       this.$router.push('admin/feedback')
+    },
+    manageQuery () {
+      this.$router.push('admin/query')
     }
   }
 }
