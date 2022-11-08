@@ -1,26 +1,47 @@
 <template>
   <div>
-    <div v-if="getDetails===false" style="height: 100vh">
+    <div v-if="getDetails===false" style="min-height: 100vh">
       <div class="row justify-content-between" style="text-align:center; margin-top: 40px">
         <div class="col-4">
-          <h1>Feedbacks</h1>
+          <h1>My Employees</h1>
+        </div>
+        <div class="col-4">
+          <b-button size="lg" variant="dark" href="/addEmployee">
+            Add Employee
+          </b-button>
         </div>
       </div>
-      <!-- <FeedbackList /> -->
-      <FeedbackList
-        v-for="feedback in feedbacks"
-        :key="feedback.feedbackID"
-        :feedbackid="feedback.feedbackID"
-        :date="feedback.fDate"
-        :time="feedback.fTime"
-        @clicked="onClickListItem(feedback)"
+
+      <!-- <div class="page">
+        <div class="buttons">
+          <a class="btn add-new" href="/booking-form">Add New Booking</a>
+        </div>
+      </div>
+      <h1 style="text-align:center">
+        My Bookings
+      </h1> -->
+      <!-- <BookingList /> -->
+      <EmployeeList
+        v-for="employee in employees"
+        :key="employee.empID"
+        :employeeid="employee.empID"
+        :emailid="employee.pEmail"
+        :fname="employee.fname"
+        :lname="employee.lname"
+        @clicked="onClickListItem(employee)"
       />
+      <!-- <div v-for="booking in bookings" :key="booking.bookingID">
+        {{ booking.bookingID }}
+      </div> -->
     </div>
     <div v-else>
       <b-button size="lg" variant="dark" @click="goBacktoPage">
         <span>Back</span>
       </b-button>
-      <FeedbackDetails :feedback="feedback" />
+      <!-- <button class="custom-btn btn-1" @click="goBacktoPage">
+        <span>Back</span>
+      </button> -->
+      <EmployeeDetails :employee="employee" />
     </div>
   </div>
 </template>
@@ -32,40 +53,42 @@ export default {
   data () {
     return {
       getDetails: false,
-      feedbacks: [],
-      feedback: {}
+      employees: [],
+      employee: {}
     }
   },
   mounted () {
-    // getmapping
-    myaxios
-      .get(
-        '/', // get mapping for all feedback
-        {
-          headers: {
-          // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        }
-
-      )
-      .then((response) => {
-        this.feedbacks = response.data
-        console.log(JSON.stringify(this.feedbacks))
-      }
-      )
-      .catch((error) => {
-        this.errorMessage = error.message
-        console.error('There was an error!', error)
-      })
+    this.getAllEmployee()
   },
   methods: {
+    getAllEmployee () {
+      myaxios
+        .get(
+          '/admin/allEmployee',
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          }
+
+        )
+        .then((response) => {
+          this.employees = response.data
+          console.log(JSON.stringify(this.employees))
+        }
+        )
+        .catch((error) => {
+          this.errorMessage = error.message
+          console.error('There was an error!', error)
+        })
+    },
     onClickListItem (value) {
       this.getDetails = true
-      this.feedback = value
-      console.log(this.feedback)
+      this.employee = value
+      console.log(this.employee)
     },
     goBacktoPage () {
+      this.getAllEmployee()
       this.getDetails = false
     }
   }

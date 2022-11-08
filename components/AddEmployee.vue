@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="bgImg" />
-    <div class="content">
+    <div class="content" style="min-height: 100%">
       <div class="d-flex h-100 align-items-center justify-content-center">
         <div class="container">
           <div class="row">
@@ -288,7 +288,9 @@ export default {
       accountNo: '',
       IFSCCode: '',
       bankName: '',
-      deptName: ''
+      deptName: '',
+      leavesAllowed: 0,
+      salary: 0
     }
   },
   methods: {
@@ -313,7 +315,9 @@ export default {
         accountNo: this.accountNo,
         IFSCCode: this.IFSCCode,
         bankName: this.bankName,
-        deptName: this.deptName
+        deptName: this.deptName,
+        leavesAllowed: this.leavesAllowed,
+        salary: this.salary
       }).then(function (response) {
         console.log(response.data)
       })
