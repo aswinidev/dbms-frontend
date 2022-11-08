@@ -1,45 +1,51 @@
 <template>
   <div class="page-content" style="height: 68vh">
-    <div class="card card-1">
-      <div class="content">
-        <h2 class="title">
-          Employees
-        </h2>
-        <p class="copy">
-          Description
-        </p>
-        <button class="btn" @click="manageEmployee">
-          Manage
-        </button>
+    <div class="card">
+      <div class="card-1">
+        <div class="content">
+          <h2 class="title">
+            Employees
+          </h2>
+          <p class="copy">
+            Description
+          </p>
+          <button class="btn" @click="manageEmployee">
+            Manage
+          </button>
+        </div>
       </div>
     </div>
-    <div class="card card-2">
-      <div class="content">
-        <h2 class="title">
-          Customer Queries
-        </h2>
-        <p class="copy">
-          Review Customer Feedback and reply Customer Queries
-        </p>
-        <button class="btn" @click="manageFeedback">
-          View Feedback
-        </button>
-        <button class="btn" @click="manageQuery">
-          Reply Query
-        </button>
+    <div class="card">
+      <div class="card-2">
+        <div class="content">
+          <h2 class="title">
+            Customer Queries
+          </h2>
+          <p class="copy">
+            Review Customer Feedback and reply Customer Queries
+          </p>
+          <button class="btn" @click="manageFeedback">
+            View Feedback
+          </button>
+          <button class="btn" @click="manageQuery">
+            Reply Query
+          </button>
+        </div>
       </div>
     </div>
-    <div class="card card-3">
-      <div class="content">
-        <h2 class="title">
-          Services
-        </h2>
-        <p class="copy">
-          Manage and review Department and Services
-        </p>
-        <button class="btn" @click="manageServices">
-          Manage
-        </button>
+    <div class="card">
+      <div class="card-3">
+        <div class="content">
+          <h2 class="title">
+            Services
+          </h2>
+          <p class="copy">
+            Manage and review Department and Services
+          </p>
+          <button class="btn" @click="manageServices">
+            Manage
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -91,7 +97,7 @@ body {
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 300px) {
   .page-content {
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
@@ -107,16 +113,74 @@ body {
       -ms-flex-align: end;
           align-items: flex-end;
   overflow: hidden;
-  padding: 1rem;
-  width: 100%;
+    width: 100%;
   text-align: center;
-  color: whitesmoke;
+  color: black;
   background-color: whitesmoke;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
 }
+.card-1{
+  background-image: url("static/imgs/hotel.png");
+  background-size: 320px 350px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  overflow: hidden;
+  width: 100%;
+  height:100%;
+  text-align: center;
+  color: white;
+  background-color: whitesmoke;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+}
+.card-2 {
+  background-image: url("static/imgs/feedback1.webp");
+  background-size: 320px 400px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  background-color: whitesmoke;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+}
+.card-3 {
+  background-image: url("static/imgs/services.jpeg");
+  background-size: 320px 400px;
+  background-position-x: 20;
+  background-position-x: 100;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  background-color: whitesmoke;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+}
 
-@media (min-width: 600px) {
+@media (min-width: 300px) {
   .card {
     height: 350px;
   }
@@ -137,7 +201,7 @@ body {
   transition: transform calc(0.7s * 1.5) cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform calc(0.7s * 1.5) cubic-bezier(0.19, 1, 0.22, 1);
   pointer-events: none;
   /* background-image: url("https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"); */
-  background-image: url("https://media.istockphoto.com/vectors/shopping-basket-with-tubes-vector-id682190248?k=20&m=682190248&s=612x612&w=0&h=EPuJMqY_7vD04zQKZdTKnmZl4agrF_3vQKacUiRKH74=");
+  /* background-image: url("https://media.istockphoto.com/vectors/shopping-basket-with-tubes-vector-id682190248?k=20&m=682190248&s=612x612&w=0&h=EPuJMqY_7vD04zQKZdTKnmZl4agrF_3vQKacUiRKH74="); */
   /* background-image: url("https://www.pinclipart.com/picdir/middle/132-1322224_whats-cooking-grocery-bag-of-food-clipart.png"); */
 }
 
