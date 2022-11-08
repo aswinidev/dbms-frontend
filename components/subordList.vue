@@ -23,7 +23,7 @@
             <i class="fas fa-building" />
             <p>Email</p>
           </div>
-          <h3>{{ pEmail }}</h3>
+          <h3>{{ pemail }}</h3>
         </div>
         <div class="company">
           <div class="placeholder">

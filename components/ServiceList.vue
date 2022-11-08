@@ -31,6 +31,15 @@
           </div>
           <h3>{{ headedby }}</h3>
         </div>
+        <div class="company">
+          <div class="placeholder">
+            <i class="fas fa-building" />
+            <p>#</p>
+          </div>
+          <button class="custom-btn btn-1" @click="changeAvail">
+            <span>Change Availability</span>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -41,6 +50,11 @@ export default {
   props: ['sname', 'availability', 'price', 'headedby'],
   mounted () {
     console.log('t')
+  },
+  methods: {
+    changeAvail (event) {
+      this.$emit('clicked')
+    }
   }
 }
 </script>

@@ -22,7 +22,7 @@
           My Bookings
         </h1> -->
       <!-- <BookingList /> -->
-      <BookingList
+      <subordList
         v-for="subord in subords"
         :key="subord.empID"
         :fname="subord.fname"
@@ -40,7 +40,7 @@
       <!-- <button class="custom-btn btn-1" @click="goBacktoPage">
           <span>Back</span>
         </button> -->
-      <BookingDetails :subord="subord" />
+      <subordDetails :subord="subord" />
     </div>
   </div>
 </template>

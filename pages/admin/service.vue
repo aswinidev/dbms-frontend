@@ -19,6 +19,7 @@
         :availability="service.availability"
         :price="service.price"
         :headedby="service.headedBy"
+        @clicked="changeAvail(service)"
       />
     </div>
     <Footer />
@@ -32,7 +33,8 @@ export default {
   data () {
     return {
       services: [],
-      getDetails: false
+      getDetails: false,
+      avail: true
     }
   },
   mounted () {
@@ -66,10 +68,39 @@ export default {
     },
     goBacktoPage () {
       this.getDetails = false
+    },
+    changeAvail (value) {
+      myaxios
+        .post(
+          '/admin/alterAvail', // post mapping for all bookings
+          {
+            serviceName: value.serviceName,
+            availability: value.availability,
+            price: value.price,
+            headedBy: value.headedBy
+          },
+          {
+            headers: {
+              // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          }
+
+        )
+        .then((response) => {
+          this.services = response.data
+          console.log(JSON.stringify(this.services))
+        }
+        )
+        .catch((error) => {
+          this.errorMessage = error.message
+          console.error('There was an error!', error)
+        })
     }
   }
 
 }
+
 </script>
 
   <style scoped>

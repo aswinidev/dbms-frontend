@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="row card-row">
-          <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
+          <div class="col-md-3 col-sm-5 col-xs-4 card-catergory">
             <span class="check-in">
               Last Name
             </span>
@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="check-out-date">
-              {{ subord.pemail }}
+              {{ subord.pEmail }}
             </span>
           </div>
         </div>
@@ -68,7 +68,7 @@
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="nights">
-              {{ subord.houseNo + " "+ subord.city+ " "+subord.state+ " "+subord.country+ " "+subord.pinCode }}
+              {{ subord.houseNo + " "+ subord.city+ " "+subord.state+ " "+subord.country+ " "+subord.pincode }}
             </span>
           </div>
         </div>
@@ -80,7 +80,7 @@
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="nights">
-              {{ subord.currHouseNo + " "+ subord.currCity+ " "+subord.currState+ " "+subord.currPinCode }}
+              {{ subord.currHouseNo + " "+ subord.currCity+ " "+subord.currState+ " "+subord.currPincode }}
             </span>
           </div>
         </div>
@@ -99,7 +99,7 @@
         <div class="row card-row">
           <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
             <span class="Details">
-              Current Address
+              Department Name
             </span>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
@@ -130,7 +130,7 @@
 export default {
   props: ['subord'],
   mounted () {
-    console.log(this.booking.bookingid)
+    console.log(this.subord)
     // getmapping for the passed bookingID
   }
 
