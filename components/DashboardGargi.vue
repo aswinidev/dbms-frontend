@@ -52,7 +52,7 @@
               </div>
               <!-- /employee/subordinates -->
               <nuxt-link to="/subord">
-                <button type="button" class="btn btn-primary btn-block">
+                <button type="button" class="btn btn-primary btn-block" style="margin-top:20px">
                   Subordinates
                 </button>
               </nuxt-link>
@@ -63,6 +63,9 @@
               </button>
               <button type="button" class="btn btn-primary btn-block" @click="navigateBookings">
                 Booking
+              </button>
+              <button type="button" class="btn btn-primary btn-block" @click="navigateReplies">
+                Replies
               </button>
             </div>
           </div>
@@ -261,10 +264,14 @@ export default {
         })
     },
     navigateContactUs () {
-      this.$router.push('contactus')
+      this.$router.push({ name: 'contactus', params: { customerid: this.cust.customerID } })
     },
     navigateBookings () {
       this.$router.push('bookings')
+    },
+    navigateReplies () {
+      // console.log(this.cust.customerID)
+      this.$router.push({ name: 'reply', params: { customerid: this.cust.customerID } })
     }
   }
 }
