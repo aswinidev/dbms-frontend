@@ -42,10 +42,10 @@
           {{ genBill.singleRoom }}
         </td>
         <td>
-          {{ "₹"+ genBill.singlePrice }}
+          {{ genBill.singlePrice }}
         </td>
         <td>
-          {{ "₹"+ genBill.singlePrice * genBill.singleRoom }}
+          {{ genBill.singlePrice * genBill.singleRoom }}
         </td>
       </tr>
       <tr id="whiteBG">
@@ -56,10 +56,10 @@
           {{ genBill.doubleRoom }}
         </td>
         <td>
-          {{ "₹" +genBill.doublePrice }}
+          {{ genBill.doublePrice }}
         </td>
         <td>
-          {{ "₹" +genBill.doubleRoom * genBill.doublePrice }}
+          {{ genBill.doubleRoom * genBill.doublePrice }}
         </td>
       </tr>
       <tr>
@@ -67,13 +67,13 @@
           GRANDTOTAL
         </td>
         <td id="whiteBG">
-          {{ "₹"+ genBill.amount }}
+          {{ genBill.amount }}
         </td>
       </tr>
     </table>
     <center>
       <button class="custom-btn btn-1" @click="pay">
-        <span>{{ "Pay ₹    " + genBill.amount }}</span>
+        <span>{{ "Pay &#8377;   " + genBill.amount }}</span>
       </button>
     </center>
   </div>
