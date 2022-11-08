@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar />
-    <AddEmployee />
+    <OldAddEmployee />
     <Footer />
   </div>
 </template>

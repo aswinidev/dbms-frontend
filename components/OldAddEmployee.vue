@@ -1,7 +1,6 @@
 <template>
   <div>
-    <NavBar />
-    <div class="ctr">
+    <div class="container" style="height:320vh">
       <form class="form-container">
         <div class="headline">
           <span>Add Employee</span>
@@ -32,6 +31,17 @@
           <label style="font-size: 18px; color: darkgrey">Email</label><br><br>
           <input
             v-model="pEmail"
+            type="Email"
+            class="form-input"
+            autocomplete="off"
+            style="cursor: auto;"
+            required
+          >
+        </div>
+        <div class="form-line">
+          <label style="font-size: 18px; color: darkgrey">Phone Number</label><br><br>
+          <input
+            v-model="phoneNo"
             type="Email"
             class="form-input"
             autocomplete="off"
@@ -100,7 +110,7 @@
         <div class="form-line">
           <label style="font-size: 18px; color: darkgrey">Pincode</label><br><br>
           <input
-            v-model="pinCode"
+            v-model="pincode"
             type="text"
             class="form-input"
             autocomplete="off"
@@ -148,7 +158,7 @@
         <div class="form-line">
           <label style="font-size: 18px; color: darkgrey">Pincode</label><br><br>
           <input
-            v-model="pinCode"
+            v-model="currPinCode"
             type="text"
             class="form-input"
             autocomplete="off"
@@ -227,7 +237,40 @@
         <div class="form-line">
           <label style="font-size: 18px; color: darkgrey">Department Name</label><br><br>
           <input
-            v-model="deptName "
+            v-model="deptName"
+            type="text"
+            class="form-input"
+            autocomplete="off"
+            style="cursor: auto;"
+            required
+          >
+        </div>
+        <div class="form-line">
+          <label style="font-size: 18px; color: darkgrey">Salary</label><br><br>
+          <input
+            v-model="salary"
+            type="number"
+            class="form-input"
+            autocomplete="off"
+            style="cursor: auto;"
+            required
+          >
+        </div>
+        <div class="form-line">
+          <label style="font-size: 18px; color: darkgrey">Leaves Allowed</label><br><br>
+          <input
+            v-model="leavesAllowed"
+            type="number"
+            class="form-input"
+            autocomplete="off"
+            style="cursor: auto;"
+            required
+          >
+        </div>
+        <div class="form-line">
+          <label style="font-size: 18px; color: darkgrey">Superviser ID</label><br><br>
+          <input
+            v-model="superID"
             type="text"
             class="form-input"
             autocomplete="off"
@@ -236,10 +279,9 @@
           >
         </div>
 
-        <input type="button" class="form-button" value="Submit" style="font-size: 18px;" @click="sendQuery">
+        <input type="button" class="form-button" value="Submit" style="font-size: 18px;" @click="addEmp">
       </form>
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -257,7 +299,7 @@ export default {
       state: '',
       city: '',
       country: '',
-      pinCode: '',
+      pincode: '',
       currHouseNo: '',
       currState: '',
       currCity: '',
@@ -268,35 +310,58 @@ export default {
       accountNo: '',
       IFSCCode: '',
       bankName: '',
-      deptName: ''
+      deptName: '',
+      leavesAllowed: 0,
+      salary: 0,
+      phoneNo: '',
+      superID: ''
     }
   },
   methods: {
     addEmp () {
-      myaxios.post('/', {
-        fname: this.fname,
-        lname: this.lname,
-        pEmail: this.pEmail,
-        pswd: this.pswd,
-        houseNo: this.houseNo,
-        state: this.state,
-        city: this.city,
-        country: this.country,
-        pinCode: this.pinCode,
-        currHouseNo: this.houseNo,
-        currState: this.state,
-        currCity: this.city,
-        currPinCode: this.pinCode,
-        gender: this.gender,
-        maritalStatus: this.maritalStatus,
-        panCard: this.panCard,
-        accountNo: this.accountNo,
-        IFSCCode: this.IFSCCode,
-        bankName: this.bankName,
-        deptName: this.deptName
-      }).then(function (response) {
-        console.log(response.data)
-      })
+      console.log(this.pincode)
+      console.log(this.currPinCode)
+      myaxios
+        .post('/admin/addEmployee', {
+          fname: this.fname,
+          lname: this.lname,
+          pEmail: this.pEmail,
+          pswd: this.pswd,
+          houseNo: this.houseNo,
+          state: this.state,
+          city: this.city,
+          country: this.country,
+          pincode: this.pincode,
+          currHouseNo: this.currHouseNo,
+          currState: this.currState,
+          currCity: this.currCity,
+          currPincode: this.currPinCode,
+          gender: this.gender,
+          maritalStatus: this.maritalStatus,
+          panCard: this.panCard,
+          accountNo: this.accountNo,
+          ifsccode: this.IFSCCode,
+          bankName: this.bankName,
+          deptName: this.deptName,
+          leavesAllowed: this.leavesAllowed,
+          salary: this.salary,
+          phoneNo: this.phoneNo,
+          superID: this.superID
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+        )
+        .then(function (response) {
+          console.log(response.data)
+        }
+        )
+        .catch((error) => {
+          this.errorMessage = error.message
+          console.error('There was an error!', error)
+        })
     }
   }
 }

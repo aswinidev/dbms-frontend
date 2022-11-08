@@ -1,37 +1,37 @@
 <template>
   <section>
     <div class="container">
-      <!-- <h1 style="text-align: center; margin-bottom: 40px;">
-        Employee List
-      </h1> -->
+      <!--single booking details-->
       <div class="request-details">
         <div class="company">
           <div class="placeholder">
             <i class="fas fa-building" />
             <p>Employee ID</p>
           </div>
-          <h3>{{ bookingid }}</h3>
+          <h3>{{ employeeid }}</h3>
         </div>
         <div class="company">
           <div class="placeholder">
             <i class="fas fa-building" />
-            <p>First Name</p>
+            <p>Name</p>
           </div>
-          <h3>{{ checkin }}</h3>
+          <h3>{{ fname + " " + lname }}</h3>
         </div>
         <div class="company">
           <div class="placeholder">
             <i class="fas fa-building" />
-            <p>Last Name</p>
+            <p>Email ID</p>
           </div>
-          <h3>{{ checkout }}</h3>
+          <h3>{{ emailid }}</h3>
         </div>
         <div class="company">
           <div class="placeholder">
             <i class="fas fa-building" />
-            <p>Department Name</p>
+            <p />
           </div>
-          <h3>{{ checkout }}</h3>
+          <button class="custom-btn btn-1" @click="goToDetails">
+            <span>View Details</span>
+          </button>
         </div>
       </div>
     </div>
@@ -40,10 +40,9 @@
 
 <script>
 export default {
-  data () {
-    return {
-      props: ['bookingid', 'checkin', 'checkout']
-    }
+  props: ['employeeid', 'emailid', 'fname', 'lname'],
+  mounted () {
+    console.log('mounted')
   },
   methods: {
     goToDetails (event) {
@@ -53,6 +52,6 @@ export default {
 }
 </script>
 
-  <style scoped>
-  @import '@/assets/booking/bookingList.css'
-  </style>
+<style scoped>
+@import '@/assets/booking/bookingList.css'
+</style>
