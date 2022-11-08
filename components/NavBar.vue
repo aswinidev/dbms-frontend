@@ -47,7 +47,7 @@
         </ul>
         <a class="nav-link my-2 my-lg-0" href="/">Home
         </a>
-        <a class=" nav-link my-2 my-lg-0" href="about">About
+        <a class=" nav-link my-2 my-lg-0" href="#about">About
         </a>
         <a class=" nav-link my-2 my-lg-0" href="#">Profile
         </a>
