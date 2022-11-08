@@ -29,7 +29,7 @@
             <i class="fas fa-building" />
             <p>Headed By</p>
           </div>
-          <h3>{{ headedBy }}</h3>
+          <h3>{{ headedby }}</h3>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  props: ['sname', 'availability', 'price', 'headedBy'],
+  props: ['sname', 'availability', 'price', 'headedby'],
   mounted () {
     console.log('t')
   }

@@ -12,12 +12,12 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input v-model="checkIn" class="form-control" type="text" required placeholder="Check In Date">
+                    <input v-model="checkIn" class="form-control" type="date" required placeholder="Check In Date">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input v-model="checkOut" class="form-control" type="text" required placeholder="Check Out Date">
+                    <input v-model="checkOut" class="form-control" type="date" required placeholder="Check Out Date">
                   </div>
                 </div>
               </div>
@@ -193,6 +193,22 @@ export default {
     }
   },
   methods: {
+    correctcheckIn () {
+      const date = toString(this.checkIn)
+      const day = date.slice(0, 2)
+      const month = date.slice(3, 5)
+      const year = date.slice(6)
+      const x = year + '-' + month + '-' + day
+      console.log(x)
+    },
+    correctcheckOut () {
+      const date = toString(this.checkOut)
+      const day = date.slice(0, 2)
+      const month = date.slice(3, 5)
+      const year = date.slice(6)
+      const y = year + '-' + month + '-' + day
+      console.log(y)
+    },
     check () {
       myaxios.post('/booking/check', {
         checkIn: this.checkIn,

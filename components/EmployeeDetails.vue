@@ -111,15 +111,41 @@
         <div class="row card-row">
           <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
             <span class="Details">
+              Leaves Taken
+            </span>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-8 card-data">
+            <span class="nights">
+              {{ lTaken }}
+            </span>
+          </div>
+        </div>
+        <div class="row card-row">
+          <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
+            <span class="Details">
               Leaves Allowed
             </span>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-8 card-data">
             <span class="nights">
-              {{ leaves.leavesAllowed }}
+              {{ lAll }}
             </span>
           </div>
         </div>
+      </div>
+      <div style="margin-top:50px">
+        <button class="custom-btn btn-1" @click="addLeave">
+          <span>Add Leave</span>
+        </button>
+        <button v-if="leaves.salary===-1" class="custom-btn btn-1" @click="markAsPaid">
+          <span>Mark as Paid</span>
+        </button>
+        <button v-if="leaves.salary!=-1" class="custom-btn btn-disabled">
+          <span>Paid</span>
+        </button>
+        <button class="custom-btn btn-1" @click="deleteEmployee">
+          <span>Delete Employee</span>
+        </button>
       </div>
     </div>
   </center>
@@ -132,7 +158,9 @@ export default {
   props: ['employee'],
   data () {
     return {
-      leaves: {}
+      leaves: {},
+      lTaken: 0,
+      lAll: 0
     }
   },
   mounted () {
@@ -145,7 +173,8 @@ export default {
         .post(
           '/admin/getLeavesSalaries',
           {
-            empID: this.employee.empID
+            empID: this.employee.empID,
+            userID: this.employee.userID
           },
           {
             headers: {
@@ -156,7 +185,105 @@ export default {
         )
         .then((response) => {
           this.leaves = response.data
-          console.log(JSON.stringify(this.employees))
+          this.lTaken = this.leaves.leavesTaken
+          this.lAll = this.leaves.leavesAllowed
+          console.log(JSON.stringify(this.leaves))
+        }
+        )
+        .catch((error) => {
+          this.errorMessage = error.message
+          console.error('There was an error!', error)
+        })
+    },
+    addLeave () {
+      myaxios
+        .post(
+          '/admin/addLeave',
+          {
+            empID: this.employee.empID,
+            leavesTaken: this.leaves.leavesTaken,
+            leavesAllowed: this.leaves.leavesAllowed,
+            salaryPaid: this.leaves.salaryPaid,
+            month: this.leaves.month,
+            year: this.leaves.year
+
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          }
+
+        )
+        .then((response) => {
+          this.leaves = response.data
+          this.lTaken = this.leaves.leavesTaken
+          this.lAll = this.leaves.leavesAllowed
+          console.log(JSON.stringify(this.leaves))
+        }
+        )
+        .catch((error) => {
+          this.errorMessage = error.message
+          console.error('There was an error!', error)
+        })
+    },
+    deleteEmployee () {
+      myaxios
+        .post(
+          '/admin/deleteEmployee',
+          {
+            userID: this.employee.userID,
+            fname: this.employee.fname,
+            lname: this.employee.lname,
+            pEmail: this.employee.pEmail,
+            pswd: this.employee.pswd,
+            houseNo: this.employee.houseNo,
+            city: this.employee.city,
+            state: this.employee.state,
+            country: this.employee.country,
+            pinCode: this.employee.pinCode,
+            gender: this.employee.gender,
+            isEmp: true
+
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          }
+
+        )
+        .then((response) => {
+          console.log(response.data)
+        }
+        )
+        .catch((error) => {
+          this.errorMessage = error.message
+          console.error('There was an error!', error)
+        })
+    },
+    markAsPaid () {
+      myaxios
+        .post(
+          '/admin/paySalary',
+          {
+            salaryPaid: this.leaves.salaryPaid,
+            empID: this.leaves.empID,
+            month: this.leaves.month,
+            year: this.leaves.year,
+            leavesAllowed: this.leaves.leavesAllowed,
+            leavesTaken: this.leaves.leavesTaken
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          }
+
+        )
+        .then((response) => {
+          this.leaves = response.data
+          console.log(JSON.stringify(this.leaves))
         }
         )
         .catch((error) => {
@@ -169,6 +296,7 @@ export default {
 }
 </script>
 
-  <style>
-  @import "@/assets/booking/bookingDetails.css"
-  </style>
+<style scoped>
+@import "@/assets/booking/bookingDetails.css";
+@import "@/assets/booking/bookingList.css"
+</style>

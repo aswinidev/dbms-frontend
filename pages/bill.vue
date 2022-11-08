@@ -1,7 +1,14 @@
 <template>
   <div>
-    <table class="table1">
-      <caption> HOTEL BILL</caption>
+    <center>
+      <h3 style="margin-top: 50px">
+        HOTEL BILL
+      </h3>
+    </center>
+    <table
+      class="table1"
+      style="margin-top: 50px"
+    >
       <tr>
         <th colspan="3">
           Invoice #{{ genBill.billID }}
@@ -72,7 +79,7 @@
       </tr>
     </table>
     <center>
-      <button class="custom-btn btn-1" @click="pay">
+      <button class="custom-btn btn-1" style="margin-top:50px" @click="pay">
         <span>{{ "Pay &#8377;   " + genBill.amount }}</span>
       </button>
     </center>
