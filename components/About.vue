@@ -4,11 +4,13 @@
     <section id="about">
       <div class="container">
         <header class="section-header aos-init">
-          <h3>About Us</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat.
+          <h2 style="font-size: 48px; margin-top: 40px; font-weight: bold; text-align: center;">
+            About Us
+          </h2>
+          <br>
+          <p style="font-size: 21px;">
+            Establised in 2000, Le Lotus aims to provide customers with the most luxurious and comfortable stay in Varanasi to
+            the customers
           </p>
         </header>
         <div class="row about-cols">
@@ -28,9 +30,8 @@
                 Our Mission
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.
+                We want to spread our business throughtout the world by providing luxurious, comfortable and affordable stay to our
+                guests. We want to become the worlds' biggest chain of hotels in the next decade. <br> <br> <br> <br>
               </p>
             </div>
           </div>
@@ -50,9 +51,9 @@
                 Our Plan
               </h2>
               <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium,
-                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                beatae vitae dicta sunt explicabo.
+                Firstly we will be spreading our business in metro cities by the end of this year. Then we will focus on maitaining
+                those hotels by keeping our customers happy so that we can become their first choice of stay whenever they plan a
+                trip. Then by the end of this decade we will expand our business to countries like England. <br> <br>
               </p>
             </div>
           </div>
@@ -72,9 +73,10 @@
                 Our Vision
               </h2>
               <p>
-                Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores
-                eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum
-                quia dolor sit amet.
+                We want to be your first choice whenever you plan to visit Varansi. Our long-term vision is to be the company of
+                choice for guests, owners and talent. Whenever a guest plans a trip, or an investor or owner is thinking of a
+                partner, or whenever someone is looking for a career in the hospitality industry, they will all think of Le Lotus
+                Grand Hotel first.
               </p>
             </div>
           </div>

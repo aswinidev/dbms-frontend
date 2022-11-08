@@ -15,7 +15,9 @@
     >
       <!-- Text slides with image -->
       <b-carousel-slide
-        img-src="@/static/imgs/ricardo-gomez-angel-AI0jVjE-RkI-unsplash.jpg"
+        caption="Welcome to hotel le lotus Grand!"
+        text="Situated close to Kashi Vishwanath Temple"
+        img-src="@/static/imgs/hotelimg.jpg"
       />
 
       <!-- Slides with custom text -->
