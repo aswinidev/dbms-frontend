@@ -13,6 +13,7 @@
         :feedbackid="feedback.feedbackID"
         :date="feedback.fDate"
         :time="feedback.fTime"
+        :review="feedback.reviews"
         @clicked="onClickListItem(feedback)"
       />
     </div>
