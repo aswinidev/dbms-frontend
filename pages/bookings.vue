@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar />
-    <div v-if="getDetails===false" style="height: 100vh">
+    <div v-if="getDetails===false" style="min-height: 100%">
       <div class="row justify-content-between" style="text-align:center; margin-top: 40px">
         <div class="col-4">
           <h1>My Bookings</h1>
