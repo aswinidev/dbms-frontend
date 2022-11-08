@@ -72,9 +72,18 @@
             </span>
           </div>
         </div>
-        <button class="custom-btn btn-1" @click="goToFeedback">
-          <span>Give Feedback</span>
-        </button>
+        <div class="row card-row">
+          <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
+            <span class="Details">
+              Services chosen
+            </span>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-8 card-data">
+            <span class="nights">
+              {{ services }}
+            </span>
+          </div>
+        </div>
 
         <!-- <div class="row card-row total">
           <div class="col-md-3 col-sm-3 col-xs-4 card-catergory">
@@ -89,15 +98,50 @@
           </div>
         </div> -->
       </div>
+      <button class="custom-btn btn-1" style="margin-top:20px" @click="goToFeedback">
+        <span>Give Feedback</span>
+      </button>
     </div>
   </center>
 </template>
 
 <script>
+import axios from 'axios'
+const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   props: ['booking'],
+  data () {
+    return {
+      services: ''
+    }
+  },
   mounted () {
     console.log(this.booking.bookingid)
+    myaxios
+      .post(
+        '/booked/services', // post mapping for all bookings
+        {
+          bookingID: this.booking.bookingID
+        },
+        {
+          headers: {
+          // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+
+      )
+      .then((response) => {
+        this.services = response.data
+        console.log(JSON.stringify(this.services))
+        const str = this.services
+        this.services = str.slice(0, -2)
+      }
+      )
+      .catch((error) => {
+        this.errorMessage = error.message
+        console.error('There was an error!', error)
+      })
     // getmapping for the passed bookingID
   },
   methods: {

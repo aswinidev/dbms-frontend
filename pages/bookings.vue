@@ -34,7 +34,7 @@
         {{ booking.bookingID }}
       </div> -->
     </div>
-    <div v-else>
+    <div v-else style="min-height: 100vh">
       <b-button size="lg" variant="dark" @click="goBacktoPage">
         <span>Back</span>
       </b-button>

@@ -76,6 +76,21 @@
             </form>
           </div>
         </div>
+        <div v-if="flag" class="row">
+          <div class="booking-form">
+            <div class="form-header">
+              <h1>Choose Services</h1>
+            </div>
+            <b-form-checkbox-group
+              v-model="selected"
+              :options="services"
+              class="mb-3"
+              value-field="serviceName"
+              text-field="serviceName"
+              style="color: white; font-size:15px"
+            />
+          </div>
+        </div>
 
         <div v-if="flag" class="row">
           <div class="booking-form">
@@ -188,7 +203,9 @@ export default {
       sadaTrue: true,
       size: 0,
       booked: false,
-      genBill: {}
+      genBill: {},
+      services: [],
+      selected: []
       // numMembers: 0
     }
   },
@@ -226,6 +243,28 @@ export default {
       }).then((response) => {
         console.log(response.data)
         this.flag = response.data
+        if (this.flag) {
+          myaxios
+            .get(
+              '/booking/services', // get mapping for all userEmployee subords
+              {
+                headers: {
+                  // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+                  Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+              }
+
+            )
+            .then((response) => {
+              this.services = response.data
+              console.log(JSON.stringify(this.services))
+            }
+            )
+            .catch((error) => {
+              this.errorMessage = error.message
+              console.error('There was an error!', error)
+            })
+        }
         console.log(this.noOfMembers)
 
         // if (response.data) { this.$router.push('index') }
@@ -233,12 +272,6 @@ export default {
         this.errorMessage = error.message
         console.error('There was an error!', error)
       })
-      // console.log('hello')
-      // console.log(this.checkIn)
-      // console.log(this.checkOut)
-      // console.log(this.singleOcc)
-      // console.log(this.doubleOcc)
-      // console.log('checking')
     },
     addMember () {
       console.log(JSON.stringify(this.member))
@@ -263,7 +296,8 @@ export default {
         countMember: this.noOfMembers,
         membersList: this.membersList,
         singleRoom: this.singleOcc,
-        doubleRoom: this.doubleOcc
+        doubleRoom: this.doubleOcc,
+        services: this.selected
         // numMembers: this.numMembers
       },
       {
