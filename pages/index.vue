@@ -4,6 +4,7 @@
     <!-- <HomePage /> -->
     <Carousel />
     <HotelService />
+    <About />
     <Footer />
   </div>
 </template>
