@@ -15,14 +15,14 @@
             <i class="fas fa-building" />
             <p>Date</p>
           </div>
-          <h3>{{ checkin }}</h3>
+          <h3>{{ date }}</h3>
         </div>
         <div class="company">
           <div class="placeholder">
             <i class="fas fa-building" />
             <p>Time</p>
           </div>
-          <h3>{{ checkout }}</h3>
+          <h3>{{ time }}</h3>
         </div>
         <div class="company">
           <div class="placeholder">
@@ -42,7 +42,7 @@
 export default {
   props: ['feedbackid', 'date', 'time'],
   mounted () {
-    console.log('t')
+    console.log(this.time)
   },
   methods: {
     goToDetails (event) {

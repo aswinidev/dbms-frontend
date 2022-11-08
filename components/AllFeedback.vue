@@ -40,7 +40,7 @@ export default {
     // getmapping
     myaxios
       .get(
-        '/', // get mapping for all feedback
+        '/admin/allFeedback', // get mapping for all feedback
         {
           headers: {
           // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
