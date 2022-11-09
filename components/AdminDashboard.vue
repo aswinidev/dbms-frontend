@@ -7,7 +7,7 @@
             Employees
           </h2>
           <p class="copy">
-            Description
+            Manage employees and their salaries
           </p>
           <button class="btn" @click="manageEmployee">
             Manage
@@ -43,7 +43,10 @@
             Manage and review Department and Services
           </p>
           <button class="btn" @click="manageServices">
-            Manage
+            Manage Service
+          </button>
+          <button class="btn" @click="manageItem">
+            Manage Item
           </button>
         </div>
       </div>
@@ -65,6 +68,9 @@ export default {
     },
     manageQuery () {
       this.$router.push('admin/query')
+    },
+    manageItem () {
+      this.$router.push('admin/items')
     }
   }
 }

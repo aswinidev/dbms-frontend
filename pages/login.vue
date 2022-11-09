@@ -67,6 +67,7 @@ export default {
   },
   methods: {
     customerLogin () {
+      const router = this.$router
       myaxios.post('/login', {
         pEmail: this.pEmail,
         pswd: this.pswd
@@ -74,9 +75,12 @@ export default {
         // console.log(response.data.token)
         localStorage.setItem('token', response.data.token)
         console.log(localStorage.getItem('token'))
+        router.push('dashboard')
         // console.log('local storage set')
+      }).catch((error) => {
+        this.errorMessage = error.message
+        alert('Invalid Credentials')
       })
-      this.$router.push('dashboard')
     }
   }
 }

@@ -5,6 +5,9 @@
     <div class="content">
       <div class="d-flex h-100 align-items-center justify-content-center">
         <div class="container">
+          <div v-if="exists" class="row alert alert-danger">
+            This Email already exists!!!
+          </div>
           <div class="row">
             <div class="col-md-7 col-sm-6 ml-auto mr-auto">
               <div class="card">
@@ -188,6 +191,8 @@ export default {
   },
   methods: {
     register () {
+      let exists = Boolean(0)
+      const router = this.$router
       myaxios.post('/register', {
         fname: this.fname,
         lname: this.lname,
@@ -203,8 +208,18 @@ export default {
         aadharCardNumber: this.aadharCardNumber
       }).then(function (response) {
         console.log(response.data)
+        console.log(response.data.localeCompare('fail'))
+        const i = response.data.localeCompare('fail')
+        if (i === 0) {
+          exists = true
+          alert('User already exists!')
+          console.log(exists)
+        }
+        router.push('login')
+      }).catch((error) => {
+        this.errorMessage = error.message
+        console.error('There was an error!', error)
       })
-      this.$router.push('login')
     }
   }
 }
