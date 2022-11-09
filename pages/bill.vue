@@ -69,6 +69,20 @@
           {{ genBill.doubleRoom * genBill.doublePrice }}
         </td>
       </tr>
+      <tr id="whiteBG">
+        <td>
+          Services
+        </td>
+        <td>
+          --
+        </td>
+        <td>
+          --
+        </td>
+        <td>
+          {{ genBill.servicePrice }}
+        </td>
+      </tr>
       <tr>
         <td colspan="3">
           GRANDTOTAL
@@ -92,10 +106,40 @@ const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
-      genBill: {}
+      genBill: {},
+      user: {}
     }
   },
   mounted () {
+    const tkn = localStorage.getItem('token')
+    if (tkn === 'null') {
+      alert('User not logged in')
+      this.$router.push('login')
+    }
+    myaxios
+      .get(
+        '/dashboard', // get mapping for all userEmployee subords
+        {
+          headers: {
+            // Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJMS05GTE4iLCJpYXQiOjE2NjcwNDkwNTQsImV4cCI6MTY2NzA1OTg1NH0.GdsK7YclD7Eeg6UJU2h8femd4FvPe1TOl8zbwm6iNd_gZejtH45Mo1YP8XIzdDrKbVA_7YshzZKHcbr3Dbw_1Q'
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+
+      )
+      .then((response) => {
+        this.user = response.data
+        console.log(JSON.stringify(this.user))
+        if (this.user.isEmp) {
+          alert('forbidden')
+          this.$router.push('forbidden')
+        }
+      }
+      )
+      .catch((error) => {
+        this.errorMessage = error.message
+        console.error('There was an error!', error)
+      })
     this.genBill = this.$route.params.genBill
     console.log(this.genBill)
   },
@@ -133,6 +177,8 @@ export default {
               console.log(response.razorpay_order_id)
               console.log(response.razorpay_signature)
               console.log('Payment Succesful')
+              alert('Payment Successful!!')
+              this.$router.push('bookings')
             },
             prefill: {
               name: '',

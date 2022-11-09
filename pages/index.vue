@@ -10,5 +10,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted () {
+    localStorage.setItem('token', 'null')
+  }
+}
 </script>

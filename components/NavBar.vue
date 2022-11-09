@@ -49,30 +49,37 @@
         </a>
         <a class=" nav-link my-2 my-lg-0" href="#about">About
         </a>
-        <a class=" nav-link my-2 my-lg-0" href="#">Profile
-        </a>
-        <a class=" nav-link my-2 my-lg-0" href="#">Login/Logout
-        </a>
+        <a v-if="isloggedIn" class=" nav-link my-2 my-lg-0" href="/dashboard">Profile</a>
+        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" href="/register">SignUp</a>
+        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" href="/login">LogIn</a>
+        <button v-if="isloggedIn" class="custom-btn btn-1" @click="logout">
+          <span>LogOut</span>
+        </button>
       </div>
     </nav>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
 export default {
   data () {
     return {
-      activeDropdown: null
+      activeDropdown: null,
+      isloggedIn: false
     }
   },
-  mounted: {
-
+  mounted () {
+    const tkn = localStorage.getItem('token')
+    if (tkn === 'null') {
+      this.isloggedIn = false
+    } else {
+      this.isloggedIn = true
+    }
   },
   methods: {
-    toggleActiveDropdown (dropdown) {
-      this.activeDropdown = this.activeDropdown === dropdown ? null : dropdown
+    logout () {
+      localStorage.setItem('token', 'null')
+      this.$router.push('login')
     }
   }
 }
