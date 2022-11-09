@@ -18,7 +18,7 @@ input:focus {
 }
 
 .bgImg {
-	background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-371678.jpg");
+		/* background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-371678.jpg"); */
 	background-size: cover;
 	display: block;
 	filter: grayscale(75%);

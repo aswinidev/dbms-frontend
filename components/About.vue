@@ -18,7 +18,7 @@
             <div class="about-col">
               <div class="img">
                 <img
-                  src="https://res.cloudinary.com/munnapatel003/image/upload/v1631986010/demo3.jpg"
+                  src="@/static/imgs/demo3.jpg"
                   alt=""
                   class="img-fluid"
                 >
@@ -39,7 +39,7 @@
             <div class="about-col">
               <div class="img">
                 <img
-                  src="https://res.cloudinary.com/munnapatel003/image/upload/v1631986010/demo2.jpg"
+                  src="@/static/imgs/demo2.jpg"
                   alt=""
                   class="img-fluid"
                 >
@@ -61,7 +61,7 @@
             <div class="about-col">
               <div class="img">
                 <img
-                  src="https://res.cloudinary.com/munnapatel003/image/upload/v1631986010/demo1.jpg"
+                  src="@/static/imgs/demo1.jpg"
                   alt=""
                   class="img-fluid"
                 >
@@ -103,7 +103,7 @@ a:hover {
 }
 
 #about {
-    background: url("https://cf.bstatic.com/images/hotel/840x460/201/201684636.jpg") center top no-repeat fixed;
+    background: url("@/static/imgs/201684636.jpg") center top no-repeat fixed;
     background-size: cover;
     padding: 29px 0 40px 0;
     position: relative;
