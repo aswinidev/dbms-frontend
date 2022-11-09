@@ -170,7 +170,7 @@ export default {
             currency: 'INR',
             name: 'Le Lotus Grand',
             description: 'Test Transaction',
-            image: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F19%2F0f%2F54%2F47%2Fexterior-night.jpg&imgrefurl=https%3A%2F%2Fwww.tripadvisor.in%2FHotel_Review-g297685-d17378459-Reviews-Le_Lotus_Grand-Varanasi_Varanasi_District_Uttar_Pradesh.html&tbnid=-W2UZP9ig2cQDM&vet=12ahUKEwjJ3crhyYv7AhVvxaACHdkICqoQMygDegUIARCmAQ..i&docid=0gmFwEWRGXoKIM&w=550&h=309&q=le%20lotus%20grand&client=firefox-b-d&ved=2ahUKEwjJ3crhyYv7AhVvxaACHdkICqoQMygDegUIARCmAQ',
+            image: '@/static/imgs/exterior-night.jpg',
             order_id: response.data.id,
             handler: function (response) {
               console.log(response.razorpay_payment_id)

@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="profile-img">
-            <img src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="">
+            <img src="@/static/imgs/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="">
           </div>
         </div>
         <div class="col-md-6">
