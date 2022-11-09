@@ -32,7 +32,7 @@
 export default {}
 </script>
 
-<style>
+<style scoped>
  @import '@/assets/footer/footer.css';
  @import 'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css';
 

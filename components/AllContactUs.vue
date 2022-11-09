@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="getDetails===false" style="height: 100vh">
+    <div v-if="getDetails===false" style="min-height: 100vh">
       <div class="row justify-content-between" style="text-align:center; margin-top: 40px">
         <div class="col-4">
           <h1>My Queries</h1>

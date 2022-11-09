@@ -209,6 +209,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   @import '@/assets/profile/profile.css';
 </style>

@@ -44,6 +44,7 @@ export default {
   },
   methods: {
     sendQuery () {
+      const router = this.$router
       console.log(this.name + ' ' + this.contactNumber + ' ' + this.query + ' ' + this.emailID)
       myaxios
         .post('/contactus',
@@ -62,6 +63,7 @@ export default {
         )
         .then(function (response) {
           console.log(response.data)
+          router.push('/dashboard')
         })
         .catch((error) => {
           this.errorMessage = error.message
