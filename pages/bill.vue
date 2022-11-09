@@ -145,6 +145,7 @@ export default {
   },
   methods: {
     pay () {
+      const router = this.$router
       const razorScript = document.createElement('script')
       razorScript.setAttribute('src', 'https://checkout.razorpay.com/v1/checkout.js')
       document.head.appendChild(razorScript)
@@ -178,7 +179,7 @@ export default {
               console.log(response.razorpay_signature)
               console.log('Payment Succesful')
               alert('Payment Successful!!')
-              this.$router.push('bookings')
+              router.push('/dashboard')
             },
             prefill: {
               name: '',

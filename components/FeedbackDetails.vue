@@ -88,6 +88,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @import "@/assets/booking/bookingDetails.css"
 </style>

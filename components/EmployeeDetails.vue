@@ -137,10 +137,10 @@
         <button class="custom-btn btn-1" @click="addLeave">
           <span>Add Leave</span>
         </button>
-        <button v-if="leaves.salary===-1" class="custom-btn btn-1" @click="markAsPaid">
+        <button v-if="leaves.salaryPaid===-1" class="custom-btn btn-1" @click="markAsPaid">
           <span>Mark as Paid</span>
         </button>
-        <button v-if="leaves.salary!=-1" class="custom-btn btn-disabled">
+        <button v-if="leaves.salaryPaid!=-1" class="custom-btn btn-disabled">
           <span>Paid</span>
         </button>
         <button class="custom-btn btn-1" @click="deleteEmployee">
@@ -228,6 +228,7 @@ export default {
         })
     },
     deleteEmployee () {
+      const router = this.$router
       myaxios
         .post(
           '/admin/deleteEmployee',
@@ -255,6 +256,7 @@ export default {
         )
         .then((response) => {
           console.log(response.data)
+          router.push('/admin/employee')
         }
         )
         .catch((error) => {

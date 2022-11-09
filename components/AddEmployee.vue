@@ -295,7 +295,8 @@ export default {
   },
   methods: {
     addEmp () {
-      myaxios.post('/', {
+      const router = this.$router
+      myaxios.post('/admin/addEmployee', {
         fname: this.fname,
         lname: this.lname,
         pEmail: this.pEmail,
@@ -320,6 +321,7 @@ export default {
         salary: this.salary
       }).then(function (response) {
         console.log(response.data)
+        router.push('admin')
       })
     }
   }

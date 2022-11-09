@@ -227,6 +227,7 @@ export default {
   },
   methods: {
     register () {
+      const router = this.$router
       myaxios.post('/edit-profile', {
         fname: this.fname,
         lname: this.lname,
@@ -246,6 +247,7 @@ export default {
         }
       }).then(function (response) {
         console.log(response.data)
+        router.push('/dashboard')
       })
     }
   }

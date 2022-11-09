@@ -1,177 +1,177 @@
 
 <template>
-  <div>
-    <NavBar />
-    <div id="booking" class="section">
-      <div class="section-center">
-        <div class="container">
-          <div v-if="sadaTrue" class="row">
-            <div class="booking-form">
-              <div class="form-header">
-                <h1>Make your reservation</h1>
+  <!-- <div> -->
+  <!-- <NavBar /> -->
+  <div id="booking" class="section">
+    <div class="section-center">
+      <div class="container">
+        <div v-if="sadaTrue" class="row">
+          <div class="booking-form">
+            <div class="form-header">
+              <h1>Make your reservation</h1>
+            </div>
+            <form>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input v-model="checkIn" class="form-control" type="date" required placeholder="Check In Date">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input v-model="checkOut" class="form-control" type="date" required placeholder="Check Out Date">
+                  </div>
+                </div>
               </div>
-              <form>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="fieldLabel">Number of Single Rooms</label>
+                    <input
+                      v-model="singleOcc"
+                      class="form-control"
+                      type="number"
+                      placeholder="No of Single rooms"
+                      required
+                    >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="fieldLabel">Number of Double Rooms</label>
+                    <input
+                      v-model="doubleOcc"
+                      class="form-control"
+                      type="number"
+                      placeholder="No of Double rooms"
+                      required
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3" />
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="fieldLabel">Number of Members</label>
+                    <input
+                      v-model="noOfMembers"
+                      class="form-control"
+                      type="number"
+                      placeholder="No of Members"
+                      min="0"
+                      required
+                    >
+                  </div>
+                </div>
+                <div class="col-md-3" />
+              </div>
+              <div class="form-btn">
+                <button
+                  type="button"
+                  class="submit-btn"
+                  @click="check"
+                >
+                  Check Availability
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div v-if="flag" class="row">
+          <div class="booking-form">
+            <div class="form-header">
+              <h1>Choose Services</h1>
+            </div>
+            <b-form-checkbox-group
+              v-model="selected"
+              :options="services"
+              class="mb-3"
+              value-field="serviceName"
+              text-field="serviceName"
+              style="color: white; font-size:15px"
+            />
+          </div>
+        </div>
+
+        <div v-if="flag" class="row">
+          <div class="booking-form">
+            <div v-if="size<noOfMembers" class="form-header">
+              <h1>Add Members</h1>
+            </div>
+            <div v-else class="form-header">
+              <h1>All Members added</h1>
+            </div>
+            <form>
+              <div v-if="size<noOfMembers">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input v-model="checkIn" class="form-control" type="date" required placeholder="Check In Date">
+                      <label class="fieldLabel">First Name</label>
+                      <input v-model="member.fname" class="form-control" type="text" required placeholder="Member First Name">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input v-model="checkOut" class="form-control" type="date" required placeholder="Check Out Date">
+                      <label class="fieldLabel">Last Name</label>
+                      <input v-model="member.lname" class="form-control" type="text" required placeholder="Member Last Name">
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="fieldLabel">Number of Single Rooms</label>
+                      <label class="fieldLabel">Age</label>
                       <input
-                        v-model="singleOcc"
+                        v-model="member.age"
                         class="form-control"
                         type="number"
-                        placeholder="No of Single rooms"
+                        placeholder="Age"
                         required
                       >
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="fieldLabel">Number of Double Rooms</label>
+                      <label class="fieldLabel">Aadhar Number</label>
                       <input
-                        v-model="doubleOcc"
+                        v-model="member.aadharNo"
                         class="form-control"
-                        type="number"
-                        placeholder="No of Double rooms"
+                        type="text"
+                        placeholder="Aadhar Number"
                         required
                       >
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3" />
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="fieldLabel">Number of Members</label>
-                      <input
-                        v-model="noOfMembers"
-                        class="form-control"
-                        type="number"
-                        placeholder="No of Members"
-                        min="0"
-                        required
-                      >
-                    </div>
-                  </div>
-                  <div class="col-md-3" />
                 </div>
                 <div class="form-btn">
                   <button
                     type="button"
                     class="submit-btn"
-                    @click="check"
+                    @click="addMember"
                   >
-                    Check Availability
+                    Add Member
                   </button>
                 </div>
-              </form>
-            </div>
-          </div>
-          <div v-if="flag" class="row">
-            <div class="booking-form">
-              <div class="form-header">
-                <h1>Choose Services</h1>
               </div>
-              <b-form-checkbox-group
-                v-model="selected"
-                :options="services"
-                class="mb-3"
-                value-field="serviceName"
-                text-field="serviceName"
-                style="color: white; font-size:15px"
-              />
-            </div>
-          </div>
 
-          <div v-if="flag" class="row">
-            <div class="booking-form">
-              <div v-if="size<noOfMembers" class="form-header">
-                <h1>Add Members</h1>
+              <div class="form-btn">
+                <button
+                  type="button"
+                  class="submit-btn final"
+                  @click="bookRoom"
+                >
+                  Book Room
+                </button>
               </div>
-              <div v-else class="form-header">
-                <h1>All Members added</h1>
-              </div>
-              <form>
-                <div v-if="size<noOfMembers">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="fieldLabel">First Name</label>
-                        <input v-model="member.fname" class="form-control" type="text" required placeholder="Member First Name">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="fieldLabel">Last Name</label>
-                        <input v-model="member.lname" class="form-control" type="text" required placeholder="Member Last Name">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="fieldLabel">Age</label>
-                        <input
-                          v-model="member.age"
-                          class="form-control"
-                          type="number"
-                          placeholder="Age"
-                          required
-                        >
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="fieldLabel">Aadhar Number</label>
-                        <input
-                          v-model="member.aadharNo"
-                          class="form-control"
-                          type="text"
-                          placeholder="Aadhar Number"
-                          required
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-btn">
-                    <button
-                      type="button"
-                      class="submit-btn"
-                      @click="addMember"
-                    >
-                      Add Member
-                    </button>
-                  </div>
-                </div>
-
-                <div class="form-btn">
-                  <button
-                    type="button"
-                    class="submit-btn final"
-                    @click="bookRoom"
-                  >
-                    Book Room
-                  </button>
-                </div>
-              </form>
-            </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    <Footer />
   </div>
+  <!-- <Footer /> -->
+  <!-- </div> -->
 
   <!-- <a target="_blank" href="https://gosnippets.com" class="white-mode">MORE</a> -->
 </template>

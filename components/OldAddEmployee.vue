@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container" style="height:320vh">
+    <div class="container" style="height:340vh">
       <form class="form-container">
         <div class="headline">
           <span>Add Employee</span>
@@ -319,6 +319,7 @@ export default {
   },
   methods: {
     addEmp () {
+      const router = this.$router
       console.log(this.pincode)
       console.log(this.currPinCode)
       myaxios
@@ -356,6 +357,7 @@ export default {
         )
         .then(function (response) {
           console.log(response.data)
+          router.push('admin/employee')
         }
         )
         .catch((error) => {
