@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     sendFeedback () {
+      const router = this.$router
       myaxios.post('/feedback', {
         bookingID: this.bookingid,
         reviews: this.review,
@@ -43,6 +44,7 @@ export default {
         }
       }).then(function (response) {
         console.log(response.data)
+        router.push('/dashboard')
       })
     }
   }

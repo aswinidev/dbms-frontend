@@ -256,7 +256,7 @@ export default {
         )
         .then((response) => {
           console.log(response.data)
-          router.push('/admin/employee')
+          router.push('/admin')
         }
         )
         .catch((error) => {
