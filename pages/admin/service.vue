@@ -7,7 +7,7 @@
           <h1>Services Available</h1>
         </div>
         <div class="col-4">
-          <b-button size="lg" variant="dark" href="/serviceForm">
+          <b-button size="lg" variant="dark" @click="serviceForm">
             Add Service
           </b-button>
         </div>
@@ -152,6 +152,9 @@ export default {
           this.errorMessage = error.message
           console.error('There was an error!', error)
         })
+    },
+    serviceForm () {
+      this.$router.push('serviceForm')
     }
   }
 

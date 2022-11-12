@@ -6,7 +6,7 @@
           <h1>Items List</h1>
         </div>
         <div class="col-4">
-          <b-button size="lg" variant="dark" href="/admin/items/addItems">
+          <b-button size="lg" variant="dark" @click="addItems">
             Add Item
           </b-button>
         </div>
@@ -69,6 +69,9 @@ export default {
     },
     goBacktoPage () {
       this.getDetails = false
+    },
+    addItems () {
+      this.$router.push('admin/items/addItems')
     }
   }
 
