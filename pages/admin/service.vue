@@ -154,7 +154,7 @@ export default {
         })
     },
     serviceForm () {
-      this.$router.push('serviceForm')
+      this.$router.push('/serviceForm')
     }
   }
 

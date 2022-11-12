@@ -93,6 +93,7 @@ export default {
   },
   methods: {
     addService () {
+      const router = this.$router
       myaxios.post('/admin/addService', {
         serviceName: this.serviceName,
         availability: this.availability,
@@ -107,6 +108,7 @@ export default {
         }
       }).then((response) => {
         console.log(response.data)
+        router.push('/admin/service')
 
         // if (response.data) { this.$router.push('index') }
       }).catch((error) => {
