@@ -57,7 +57,7 @@
 </template>
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com/hotel' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
