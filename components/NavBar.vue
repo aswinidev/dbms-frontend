@@ -49,9 +49,15 @@
         </a>
         <a class=" nav-link my-2 my-lg-0" href="/#about">About
         </a>
-        <a v-if="isloggedIn" class=" nav-link my-2 my-lg-0" @click="dashboard">Profile</a>
-        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" @click="register">SignUp</a>
-        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" @click="login">LogIn</a>
+        <button v-if="isloggedIn" class=" nav-link my-2 my-lg-0" @click="dashboard">
+          Profile
+        </button>
+        <button v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" @click="register">
+          SignUp
+        </button>
+        <button v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" @click="login">
+          LogIn
+        </button>
         <button v-if="isloggedIn" class="custom-btn btn-1" @click="logout">
           <span>LogOut</span>
         </button>
