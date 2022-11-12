@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="min-height:100vh">
     <form class="form-container">
       <div class="headline">
         <span>Feedback</span>

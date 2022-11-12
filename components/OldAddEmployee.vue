@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container" style="height:340vh">
+    <div class="container" style="min-height:340vh">
       <form class="form-container">
         <div class="headline">
           <span>Add Employee</span>
