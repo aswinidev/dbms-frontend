@@ -178,7 +178,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 class Member {
   constructor (fname, lname, aadharNo, age) {
     this.fname = fname

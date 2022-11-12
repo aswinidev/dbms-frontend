@@ -25,7 +25,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   props: ['customerid'],
   data () {
