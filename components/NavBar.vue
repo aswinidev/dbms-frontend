@@ -88,13 +88,13 @@ export default {
       this.$router.push('/login')
     },
     dashboard () {
-      this.$router.push('dashboard')
+      this.$router.push('/dashboard')
     },
     register () {
-      this.$router.push('register')
+      this.$router.push('/register')
     },
     login () {
-      this.$router.push('login')
+      this.$router.push('/login')
     }
   }
 }

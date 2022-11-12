@@ -266,7 +266,7 @@ export default {
       this.$router.push({ name: 'contactus', params: { customerid: this.cust.customerID } })
     },
     navigateBookings () {
-      this.$router.push('bookings')
+      this.$router.push('/bookings')
     },
     navigateReplies () {
       // console.log(this.cust.customerID)

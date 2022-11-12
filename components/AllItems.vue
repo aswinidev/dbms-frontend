@@ -71,7 +71,7 @@ export default {
       this.getDetails = false
     },
     addItems () {
-      this.$router.push('admin/items/addItems')
+      this.$router.push('/admin/items/addItems')
     }
   }
 

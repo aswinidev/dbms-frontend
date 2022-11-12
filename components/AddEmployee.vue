@@ -321,7 +321,7 @@ export default {
         salary: this.salary
       }).then(function (response) {
         console.log(response.data)
-        router.push('admin')
+        router.push('/admin')
       })
     }
   }

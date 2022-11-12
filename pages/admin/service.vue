@@ -43,7 +43,7 @@ export default {
     const tkn = localStorage.getItem('token')
     if (tkn === 'null') {
       alert('User not logged in')
-      this.$router.push('login')
+      this.$router.push('/login')
     }
     myaxios
       .get(
@@ -61,7 +61,7 @@ export default {
         console.log(JSON.stringify(this.user))
         if (!this.user.isEmp) {
           alert('forbidden')
-          this.$router.push('forbidden')
+          this.$router.push('/forbidden')
         }
       }
       )
@@ -86,7 +86,7 @@ export default {
           this.isAdmin = true
         } else {
           alert('forbidden')
-          this.$router.push('forbidden')
+          this.$router.push('/forbidden')
         }
       })
       .catch((error) => {
