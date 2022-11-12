@@ -7,7 +7,7 @@
           <h1>My Bookings</h1>
         </div>
         <div class="col-4">
-          <b-button size="lg" variant="dark" href="/bookingForm">
+          <b-button size="lg" variant="dark" @click="bookingForm">
             Add Booking
           </b-button>
         </div>
@@ -119,6 +119,9 @@ export default {
     },
     goBacktoPage () {
       this.getDetails = false
+    },
+    bookingForm () {
+      this.$router.push('bookingForm')
     }
   }
 
