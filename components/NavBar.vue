@@ -49,13 +49,13 @@
         </a>
         <a class=" nav-link my-2 my-lg-0" href="/#about">About
         </a>
-        <button v-if="isloggedIn" class=" nav-link my-2 my-lg-0" @click="dashboard">
+        <button v-if="isloggedIn" class="custom-btn btn-1" @click="dashboard">
           Profile
         </button>
-        <button v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" @click="register">
+        <button v-if="!isloggedIn" class="custom-btn btn-1" @click="register">
           SignUp
         </button>
-        <button v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" @click="login">
+        <button v-if="!isloggedIn" class="custom-btn btn-1" @click="login">
           LogIn
         </button>
         <button v-if="isloggedIn" class="custom-btn btn-1" @click="logout">
