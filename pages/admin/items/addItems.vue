@@ -140,6 +140,7 @@ export default {
   },
   methods: {
     addItem () {
+      const router = this.$router
       myaxios
         .post('/admin/addItem', {
           itemName: this.itemName,
@@ -156,6 +157,7 @@ export default {
         )
         .then(function (response) {
           console.log(response.data)
+          router.push('/admin/items')
         }
         )
         .catch((error) => {
