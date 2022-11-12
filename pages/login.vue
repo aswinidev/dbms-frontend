@@ -75,7 +75,7 @@ export default {
         // console.log(response.data.token)
         localStorage.setItem('token', response.data.token)
         console.log(localStorage.getItem('token'))
-        router.push('dashboard')
+        router.push('/dashboard')
         // console.log('local storage set')
       }).catch((error) => {
         this.errorMessage = error.message
