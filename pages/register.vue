@@ -215,7 +215,7 @@ export default {
           alert('User already exists!')
           console.log(exists)
         }
-        router.push('login')
+        router.push('/login')
       }).catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)

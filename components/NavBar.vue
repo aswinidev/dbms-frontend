@@ -49,9 +49,9 @@
         </a>
         <a class=" nav-link my-2 my-lg-0" href="/#about">About
         </a>
-        <a v-if="isloggedIn" class=" nav-link my-2 my-lg-0" href="/dashboard">Profile</a>
-        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" href="/register">SignUp</a>
-        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" href="/login">LogIn</a>
+        <a v-if="isloggedIn" class=" nav-link my-2 my-lg-0" @click="dashboard">Profile</a>
+        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" @click="register">SignUp</a>
+        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" @click="login">LogIn</a>
         <button v-if="isloggedIn" class="custom-btn btn-1" @click="logout">
           <span>LogOut</span>
         </button>
@@ -79,7 +79,13 @@ export default {
   methods: {
     logout () {
       localStorage.setItem('token', 'null')
-      this.$router.push('login')
+      this.$router.push('/login')
+    },
+    dashboard () {
+      this.$router.push('dashboard')
+    },
+    register () {
+      this.$$router.push('register')
     }
   }
 }
