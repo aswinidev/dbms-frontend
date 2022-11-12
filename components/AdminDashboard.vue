@@ -58,19 +58,19 @@
 export default {
   methods: {
     manageServices () {
-      this.$router.push('admin/service')
+      this.$router.push('/admin/service')
     },
     manageEmployee () {
-      this.$router.push('admin/employee')
+      this.$router.push('/admin/employee')
     },
     manageFeedback () {
-      this.$router.push('admin/feedback')
+      this.$router.push('/admin/feedback')
     },
     manageQuery () {
-      this.$router.push('admin/query')
+      this.$router.push('/admin/query')
     },
     manageItem () {
-      this.$router.push('admin/items')
+      this.$router.push('/admin/items')
     }
   }
 }
