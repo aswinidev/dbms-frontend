@@ -91,7 +91,10 @@ export default {
       this.$router.push('dashboard')
     },
     register () {
-      this.$$router.push('register')
+      this.$router.push('register')
+    },
+    login () {
+      this.$router.push('login')
     }
   }
 }
