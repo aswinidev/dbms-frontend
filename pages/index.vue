@@ -11,8 +11,5 @@
 
 <script>
 export default {
-  mounted () {
-    localStorage.setItem('token', 'null')
-  }
 }
 </script>

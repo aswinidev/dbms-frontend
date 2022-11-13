@@ -76,7 +76,7 @@ export default {
   },
   mounted () {
     const tkn = localStorage.getItem('token')
-    if (tkn === 'null') {
+    if (tkn === null) {
       this.isloggedIn = false
     } else {
       this.isloggedIn = true
@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     logout () {
-      localStorage.setItem('token', 'null')
+      localStorage.removeItem('token')
       this.$router.push('/login')
     },
     dashboard () {
