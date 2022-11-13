@@ -75,7 +75,7 @@
       </div>
       <div style="margin-top:50px">
         <button class="custom-btn btn-1" @click="deleteItem">
-          <span>Delete Item</span>
+          <span>Recieved Item</span>
         </button>
       </div>
     </div>
