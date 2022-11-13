@@ -54,7 +54,6 @@
         >Reply</a>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
