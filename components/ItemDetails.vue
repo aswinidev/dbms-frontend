@@ -93,6 +93,7 @@ export default {
   },
   methods: {
     deleteItem () {
+      const router = this.$router
       myaxios
         .post('/admin/deleteItem', {
           itemName: this.item.itemName
@@ -104,6 +105,7 @@ export default {
         }
         ).then(function (response) {
           console.log(response.data)
+          router.push('/admin')
         }
         )
         .catch((error) => {

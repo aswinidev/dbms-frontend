@@ -10,7 +10,7 @@
       <FeedbackList
         v-for="feedback in feedbacks"
         :key="feedback.feedbackID"
-        :feedbackid="feedback.feedbackID"
+        :suggestions="feedback.suggestions"
         :date="feedback.fDate"
         :time="feedback.fTime"
         :review="feedback.reviews"

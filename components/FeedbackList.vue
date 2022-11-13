@@ -42,10 +42,10 @@
     <div class="card" style="margin: 100px 300px 50px; width: ;">
       <div class="card-body">
         <h5 class="card-title" style="font-size: 30px; font-weight: 600;">
-          {{ feedbackid }} | {{ date }} | {{ time }}
+          {{ review }} | {{ date }} | {{ time }}
         </h5>
         <p class="card-text" style="font-size: 24px;">
-          {{ "Review: " + review }}
+          {{ "Suggestion: " + suggestions }}
         </p>
         <a
           href="#"
@@ -59,7 +59,7 @@
 </template>
 <script>
 export default {
-  props: ['feedbackid', 'date', 'time', 'review'],
+  props: ['suggestions', 'date', 'time', 'review'],
   mounted () {
     console.log(this.time)
   },
