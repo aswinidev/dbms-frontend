@@ -69,7 +69,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
@@ -84,11 +84,11 @@ export default {
   },
   mounted () {
     const tkn = localStorage.getItem('token')
-    if (tkn === 'null') {
+    if (tkn === null) {
       alert('User not logged in')
-      this.$router.push('login')
+      this.$router.push('/login')
     }
-
+    const router = this.$router
     myaxios
       .get(
         '/dashboard', // get mapping for all userEmployee subords
@@ -105,13 +105,15 @@ export default {
         console.log(JSON.stringify(this.user))
         if (!this.user.isEmp) {
           alert('forbidden')
-          this.$router.push('forbidden')
+          this.$router.push('/forbidden')
         }
       }
       )
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
 
     myaxios
@@ -130,16 +132,19 @@ export default {
           this.isAdmin = true
         } else {
           alert('forbidden')
-          this.$router.push('forbidden')
+          this.$router.push('/forbidden')
         }
       })
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
   },
   methods: {
     addItem () {
+      const router = this.$router
       myaxios
         .post('/admin/addItem', {
           itemName: this.itemName,
@@ -156,11 +161,14 @@ export default {
         )
         .then(function (response) {
           console.log(response.data)
+          router.push('/admin/items')
         }
         )
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     }
   }

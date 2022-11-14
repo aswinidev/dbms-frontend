@@ -48,7 +48,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
@@ -62,6 +62,7 @@ export default {
   },
   methods: {
     getAllEmployee () {
+      const router = this.$router
       myaxios
         .get(
           '/admin/allEmployee',
@@ -80,6 +81,8 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     },
     onClickListItem (value) {

@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="wrapper">
     <div class="box">
       <h1>403</h1>
@@ -97,4 +97,4 @@ p img {
         margin-top: 12em;
     }
 }
-</style> -->
+</style>

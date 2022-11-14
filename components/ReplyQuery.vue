@@ -30,7 +30,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   props: ['query'],
   data () {
@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     replyQuery () {
+      const router = this.$router
       myaxios
         .post(
           '/admin/addReply',
@@ -58,6 +59,12 @@ export default {
         )
         .then(function (response) {
           console.log(response.data)
+        })
+        .catch((error) => {
+          this.errorMessage = error.message
+          console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     }
   }

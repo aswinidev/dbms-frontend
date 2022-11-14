@@ -49,9 +49,15 @@
         </a>
         <a class=" nav-link my-2 my-lg-0" href="/#about">About
         </a>
-        <a v-if="isloggedIn" class=" nav-link my-2 my-lg-0" href="/dashboard">Profile</a>
-        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" href="/register">SignUp</a>
-        <a v-if="!isloggedIn" class=" nav-link my-2 my-lg-0" href="/login">LogIn</a>
+        <button v-if="isloggedIn" class="custom-btn btn-1" @click="dashboard">
+          Profile
+        </button>
+        <button v-if="!isloggedIn" class="custom-btn btn-1" @click="register">
+          SignUp
+        </button>
+        <button v-if="!isloggedIn" class="custom-btn btn-1" @click="login">
+          LogIn
+        </button>
         <button v-if="isloggedIn" class="custom-btn btn-1" @click="logout">
           <span>LogOut</span>
         </button>
@@ -70,7 +76,7 @@ export default {
   },
   mounted () {
     const tkn = localStorage.getItem('token')
-    if (tkn === 'null') {
+    if (tkn === null) {
       this.isloggedIn = false
     } else {
       this.isloggedIn = true
@@ -78,8 +84,17 @@ export default {
   },
   methods: {
     logout () {
-      localStorage.setItem('token', 'null')
-      this.$router.push('login')
+      localStorage.removeItem('token')
+      this.$router.push('/login')
+    },
+    dashboard () {
+      this.$router.push('/dashboard')
+    },
+    register () {
+      this.$router.push('/register')
+    },
+    login () {
+      this.$router.push('/login')
     }
   }
 }

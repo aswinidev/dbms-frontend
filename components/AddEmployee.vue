@@ -265,7 +265,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
@@ -321,7 +321,12 @@ export default {
         salary: this.salary
       }).then(function (response) {
         console.log(response.data)
-        router.push('admin')
+        router.push('/admin')
+      }).catch((error) => {
+        this.errorMessage = error.message
+        console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
     }
   }

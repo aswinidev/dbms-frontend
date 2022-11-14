@@ -57,7 +57,7 @@
 </template>
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
@@ -75,7 +75,7 @@ export default {
         // console.log(response.data.token)
         localStorage.setItem('token', response.data.token)
         console.log(localStorage.getItem('token'))
-        router.push('dashboard')
+        router.push('/dashboard')
         // console.log('local storage set')
       }).catch((error) => {
         this.errorMessage = error.message

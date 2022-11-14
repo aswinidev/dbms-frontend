@@ -171,7 +171,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
@@ -215,10 +215,12 @@ export default {
           alert('User already exists!')
           console.log(exists)
         }
-        router.push('login')
+        router.push('/login')
       }).catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('Invalid Input!')
+        // router.push('/')
       })
     }
   }

@@ -75,7 +75,7 @@
       </div>
       <div style="margin-top:50px">
         <button class="custom-btn btn-1" @click="deleteItem">
-          <span>Delete Item</span>
+          <span>Recieved Item</span>
         </button>
       </div>
     </div>
@@ -84,7 +84,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   props: ['item'],
   mounted () {
@@ -93,6 +93,7 @@ export default {
   },
   methods: {
     deleteItem () {
+      const router = this.$router
       myaxios
         .post('/admin/deleteItem', {
           itemName: this.item.itemName
@@ -104,11 +105,14 @@ export default {
         }
         ).then(function (response) {
           console.log(response.data)
+          router.push('/admin')
         }
         )
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     }
   }

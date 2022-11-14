@@ -6,7 +6,7 @@
           <h1>Items List</h1>
         </div>
         <div class="col-4">
-          <b-button size="lg" variant="dark" href="/admin/items/addItems">
+          <b-button size="lg" variant="dark" @click="addItems">
             Add Item
           </b-button>
         </div>
@@ -32,7 +32,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
@@ -42,6 +42,7 @@ export default {
     }
   },
   mounted () {
+    const router = this.$router
     myaxios
       .get(
         '/admin/items',
@@ -59,6 +60,8 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
   },
   methods: {
@@ -69,6 +72,9 @@ export default {
     },
     goBacktoPage () {
       this.getDetails = false
+    },
+    addItems () {
+      this.$router.push('/admin/items/addItems')
     }
   }
 

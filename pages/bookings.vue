@@ -7,7 +7,7 @@
           <h1>My Bookings</h1>
         </div>
         <div class="col-4">
-          <b-button size="lg" variant="dark" href="/bookingForm">
+          <b-button size="lg" variant="dark" @click="bookingForm">
             Add Booking
           </b-button>
         </div>
@@ -49,7 +49,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
@@ -61,10 +61,11 @@ export default {
   },
   mounted () {
     const tkn = localStorage.getItem('token')
-    if (tkn === 'null') {
+    if (tkn === null) {
       alert('User not logged in')
-      this.$router.push('login')
+      this.$router.push('/login')
     }
+    const router = this.$router
     myaxios
       .get(
         '/dashboard', // get mapping for all userEmployee subords
@@ -81,13 +82,15 @@ export default {
         console.log(JSON.stringify(this.user))
         if (this.user.isEmp) {
           alert('forbidden')
-          this.$router.push('forbidden')
+          this.$router.push('/forbidden')
         }
       }
       )
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
     // getmapping
     myaxios
@@ -109,6 +112,8 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
   },
   methods: {
@@ -119,6 +124,9 @@ export default {
     },
     goBacktoPage () {
       this.getDetails = false
+    },
+    bookingForm () {
+      this.$router.push('/bookingForm')
     }
   }
 

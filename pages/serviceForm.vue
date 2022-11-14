@@ -73,7 +73,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
@@ -86,13 +86,14 @@ export default {
   },
   mounted () {
     const tkn = localStorage.getItem('token')
-    if (tkn === 'null') {
+    if (tkn === null) {
       alert('User not logged in')
       this.$router.push('login')
     }
   },
   methods: {
     addService () {
+      const router = this.$router
       myaxios.post('/admin/addService', {
         serviceName: this.serviceName,
         availability: this.availability,
@@ -107,11 +108,14 @@ export default {
         }
       }).then((response) => {
         console.log(response.data)
+        router.push('/admin/service')
 
         // if (response.data) { this.$router.push('index') }
       }).catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
       // console.log('hello')
       // console.log(this.checkIn)

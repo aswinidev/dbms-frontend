@@ -178,7 +178,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 class Member {
   constructor (fname, lname, aadharNo, age) {
     this.fname = fname
@@ -217,11 +217,11 @@ export default {
   },
   mounted () {
     const tkn = localStorage.getItem('token')
-    if (tkn === 'null') {
+    if (tkn === null) {
       alert('User not logged in')
-      this.$router.push('login')
+      this.$router.push('/login')
     }
-
+    const router = this.$router
     myaxios
       .get(
         '/dashboard', // get mapping for all userEmployee subords
@@ -238,13 +238,15 @@ export default {
         console.log(JSON.stringify(this.user))
         if (this.user.isEmp) {
           alert('forbidden')
-          this.$router.push('forbidden')
+          this.$router.push('/forbidden')
         }
       }
       )
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
   },
   methods: {
@@ -266,6 +268,7 @@ export default {
       console.log(y)
     },
     check () {
+      const router = this.$router
       myaxios.post('/booking/check', {
         checkIn: this.checkIn,
         checkOut: this.checkOut,
@@ -302,6 +305,8 @@ export default {
             .catch((error) => {
               this.errorMessage = error.message
               console.error('There was an error!', error)
+              alert('An Error has occurred!')
+              router.push('/')
             })
         }
         console.log(this.noOfMembers)
@@ -310,6 +315,8 @@ export default {
       }).catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
     },
     addMember () {
@@ -326,6 +333,7 @@ export default {
       console.log(JSON.stringify(this.membersList[0]))
     },
     bookRoom () {
+      const router = this.$router
       console.log(this.membersList.length)
       console.log(JSON.stringify(this.membersList))
       myaxios.post('/booking/book', {
@@ -354,6 +362,8 @@ export default {
       }).catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
     }
   }

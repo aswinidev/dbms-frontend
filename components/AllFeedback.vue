@@ -10,7 +10,7 @@
       <FeedbackList
         v-for="feedback in feedbacks"
         :key="feedback.feedbackID"
-        :feedbackid="feedback.feedbackID"
+        :suggestions="feedback.suggestions"
         :date="feedback.fDate"
         :time="feedback.fTime"
         :review="feedback.reviews"
@@ -28,7 +28,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   data () {
     return {
@@ -38,6 +38,7 @@ export default {
     }
   },
   mounted () {
+    const router = this.$router
     // getmapping
     myaxios
       .get(
@@ -58,6 +59,8 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
   },
   methods: {

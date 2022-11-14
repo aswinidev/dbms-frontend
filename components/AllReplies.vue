@@ -25,7 +25,7 @@
 
 <script>
 import axios from 'axios'
-const myaxios = axios.create({ baseURL: 'http://localhost:8080' })
+const myaxios = axios.create({ baseURL: 'https://lelotusgrand.herokuapp.com' })
 export default {
   props: ['customerid'],
   data () {
@@ -41,6 +41,7 @@ export default {
   },
   methods: {
     landingRequest () {
+      const router = this.$router
       myaxios
         .post(
           '/contactus/repliedQuery',
@@ -62,6 +63,8 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     },
     onClickListItem (value) {
