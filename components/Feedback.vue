@@ -45,6 +45,11 @@ export default {
       }).then(function (response) {
         console.log(response.data)
         router.push('/dashboard')
+      }).catch((error) => {
+        this.errorMessage = error.message
+        console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
     }
   }

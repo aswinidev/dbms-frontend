@@ -186,6 +186,7 @@ export default {
   mounted () {
     // console.log('mounted')
     console.log(localStorage.getItem('token'))
+    const router = this.$router
     myaxios
       .get(
         '/dashboard',
@@ -203,6 +204,8 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
     console.log(this.user)
   }

@@ -111,6 +111,8 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     }
   }

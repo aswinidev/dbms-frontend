@@ -42,6 +42,7 @@ export default {
     }
   },
   mounted () {
+    const router = this.$router
     myaxios
       .get(
         '/admin/items',
@@ -59,6 +60,8 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
   },
   methods: {

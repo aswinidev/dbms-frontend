@@ -23,6 +23,7 @@ export default {
   methods: {
     paymentHandler () {
       console.log('payment started..' + this.amount)
+      const router = this.$router
       myaxios.post(
         '/transaction',
         {
@@ -82,6 +83,8 @@ export default {
       }).catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
     }
   }

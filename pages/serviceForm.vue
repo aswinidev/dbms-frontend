@@ -86,7 +86,7 @@ export default {
   },
   mounted () {
     const tkn = localStorage.getItem('token')
-    if (tkn === 'null') {
+    if (tkn === null) {
       alert('User not logged in')
       this.$router.push('login')
     }
@@ -114,6 +114,8 @@ export default {
       }).catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
       // console.log('hello')
       // console.log(this.checkIn)

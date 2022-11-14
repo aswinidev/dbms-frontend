@@ -61,10 +61,11 @@ export default {
   },
   mounted () {
     const tkn = localStorage.getItem('token')
-    if (tkn === 'null') {
+    if (tkn === null) {
       alert('User not logged in')
       this.$router.push('/login')
     }
+    const router = this.$router
     myaxios
       .get(
         '/dashboard', // get mapping for all userEmployee subords
@@ -88,6 +89,8 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
     // getmapping
     myaxios
@@ -109,6 +112,8 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
   },
   methods: {

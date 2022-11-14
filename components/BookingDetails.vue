@@ -117,6 +117,7 @@ export default {
   },
   mounted () {
     console.log(this.booking.bookingid)
+    const router = this.$router
     myaxios
       .post(
         '/booked/services', // post mapping for all bookings
@@ -141,6 +142,8 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
     // getmapping for the passed bookingID
   },

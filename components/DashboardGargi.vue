@@ -219,11 +219,14 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('User does not exist!')
+        this.logout()
       })
     // if (this.noidea) { this.getEmployee() } else { this.getCustomer() }
   },
   methods: {
     getEmployee () {
+      const router = this.$router
       myaxios
         .get(
           '/dashboard/employee',
@@ -243,10 +246,13 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     },
 
     getCustomer () {
+      const router = this.$router
       myaxios
         .get(
           '/dashboard/customer',
@@ -260,6 +266,8 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     },
     navigateContactUs () {
@@ -271,6 +279,10 @@ export default {
     navigateReplies () {
       // console.log(this.cust.customerID)
       this.$router.push({ name: 'reply', params: { customerid: this.cust.customerID } })
+    },
+    logout () {
+      localStorage.removeItem('token')
+      this.$router.push('/login')
     }
   }
 }

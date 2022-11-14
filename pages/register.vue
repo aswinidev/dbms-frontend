@@ -219,6 +219,8 @@ export default {
       }).catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('Invalid Input!')
+        // router.push('/')
       })
     }
   }

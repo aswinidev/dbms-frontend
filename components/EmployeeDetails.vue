@@ -169,6 +169,7 @@ export default {
   },
   methods: {
     getLeaves () {
+      const router = this.$router
       myaxios
         .post(
           '/admin/getLeavesSalaries',
@@ -193,9 +194,12 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     },
     addLeave () {
+      const router = this.$router
       myaxios
         .post(
           '/admin/addLeave',
@@ -225,6 +229,8 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     },
     deleteEmployee () {
@@ -262,9 +268,12 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     },
     markAsPaid () {
+      const router = this.$router
       myaxios
         .post(
           '/admin/paySalary',
@@ -291,6 +300,8 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     }
   }

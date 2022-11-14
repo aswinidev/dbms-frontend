@@ -62,6 +62,7 @@ export default {
   },
   methods: {
     getAllEmployee () {
+      const router = this.$router
       myaxios
         .get(
           '/admin/allEmployee',
@@ -80,6 +81,8 @@ export default {
         .catch((error) => {
           this.errorMessage = error.message
           console.error('There was an error!', error)
+          alert('An Error has occurred!')
+          router.push('/')
         })
     },
     onClickListItem (value) {

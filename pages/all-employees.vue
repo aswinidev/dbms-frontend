@@ -83,6 +83,7 @@ export default {
     }
   },
   mounted () {
+    const router = this.$router
     // console.log('mounted')
     myaxios
       .get(
@@ -96,6 +97,8 @@ export default {
       .catch((error) => {
         this.errorMessage = error.message
         console.error('There was an error!', error)
+        alert('An Error has occurred!')
+        router.push('/')
       })
   },
   methods: {
